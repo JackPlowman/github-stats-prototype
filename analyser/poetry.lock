@@ -432,6 +432,16 @@ files = [
 ]
 
 [[package]]
+name = "mdutils"
+version = "1.6.0"
+description = "Useful package for creating Markdown files while executing python code."
+optional = false
+python-versions = "^3.6"
+files = [
+    {file = "mdutils-1.6.0.tar.gz", hash = "sha256:647f3cf00df39fee6c57fa6738dc1160fce1788276b5530c87d43a70cdefdaf1"},
+]
+
+[[package]]
 name = "packaging"
 version = "24.1"
 description = "Core utilities for Python packages"
@@ -859,4 +869,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bd4f61412e7d858d058235182d88b1807a3bfd93ea20cd75957699bf43fab40d"
+content-hash = "077d66ed4a417834bba539e170cb219d4c6c318be02ba0435248911709ac1f05"
