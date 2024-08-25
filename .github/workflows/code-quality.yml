@@ -1,4 +1,3 @@
----
 name: "Code Quality"
 
 on:
@@ -35,3 +34,29 @@ jobs:
           VALIDATE_PYTHON_MYPY: false
           VALIDATE_PYTHON_PYLINT: false
           VALIDATE_PYTHON_RUFF: false
+
+  check-python-code-format-and-quality:
+    name: Check Python Code Format and Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Python and Dependencies
+        uses: ./.github/actions/setup-python
+
+      - name: Check Python Code Quality (Ruff)
+        run: ruff check github-stats-analyser
+
+      - name: Check Python Code Format (Ruff)
+        run: ruff format --check github-stats-analyser
+
+      - name: Check Python Code Security (Bandit)
+        run: bandit -r github-stats-analyser
+
+      - name: Check Python Code for Dead Code (Vulture)
+        run: vulture github-stats-analyser
+
+
+

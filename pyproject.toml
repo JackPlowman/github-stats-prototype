@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "github-stats-analyser"
+version = "0.1.0"
+description = ""
+authors = ["Jack Plowman <62281988+JackPlowman@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12"
+pygithub = "2.3.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "0.6.2"
+pytest = "8.3.2"
+vulture = "2.11"
+bandit = "1.7.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
