@@ -16,7 +16,7 @@ def main() -> None:
 
 
 def create_markdown_file() -> None:
-
+    """Create the markdown file."""
     markdown_file = MdUtils(file_name="markdown/index.md", title="GitHub Stats Repository")
     markdown_file.create_md_file()
 
