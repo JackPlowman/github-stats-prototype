@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      
+      - gh-pages-workflow
 
 permissions:
   contents: write
