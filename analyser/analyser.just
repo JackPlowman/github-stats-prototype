@@ -26,7 +26,7 @@ ruff-format-fix:
 # ------------------------------------------------------------------------------
 
 bandit:
-    bandit -r .
+    poetry run bandit -r .
 
 vulture:
-    vulture .
+    poetry run vulture .
