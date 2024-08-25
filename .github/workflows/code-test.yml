@@ -32,7 +32,7 @@ jobs:
         run: poetry install
 
       - name: Run Unit Tests
-        run: poetry run pytest --cov=github_stats_analyser --cov-report=xml --color=yes
+        run: just analyser::unit-test
 
       - name: Override Coverage Source Path for Sonar
         run: sed -i "s/<source>\/home\/runner\/work\/github-stats\/github-stats\/github_stats_analyser<\/source>/<source>\/github\/workspace\/github_stats_analyser<\/source>/g" /home/runner/work/github-stats/github-stats/coverage.xml
