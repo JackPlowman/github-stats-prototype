@@ -41,6 +41,9 @@ jobs:
       - name: Ls
         run: ls -a
 
+      - name: Override Coverage Source Path for Sonar
+        run: sed -i "s/<source>\/home\/runner\/work\/github-stats\/github-stats\/<\/source>/<source>\/github\/workspace\/lambdas<\/source>/g" /home/runner/work/github-stats/github-stats\/coverage_report.xml
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
         env:
