@@ -25,6 +25,8 @@ jobs:
         with:
           python-version: 3.12
           cache: "poetry"
+      - name: Set up Just
+        uses: extractions/setup-just@v2
       - name: Install Poetry Dependencies
         run: poetry install
       - name: Run Unit Tests
