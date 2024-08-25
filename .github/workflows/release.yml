@@ -23,7 +23,7 @@ jobs:
         with:
           config-file: .github/release-please/release-please-config.json
           manifest-file: .github/release-please/.release-please-manifest.json
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Configure release metedata
         if: steps.release.outputs.release_created
