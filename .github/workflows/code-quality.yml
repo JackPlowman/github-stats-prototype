@@ -61,13 +61,13 @@ jobs:
           poetry install
 
       - name: Check Python Code Quality (Ruff)
-        run: poetry run ruff check github-stats-analyser
+        run: poetry run ruff check github_stats_analyser
 
       - name: Check Python Code Format (Ruff)
-        run: poetry run ruff format --check github-stats-analyser
+        run: poetry run ruff format --check github_stats_analyser
 
       - name: Check Python Code Security (Bandit)
-        run: poetry run bandit -r github-stats-analyser
+        run: poetry run bandit -r github_stats_analyser
 
       - name: Check Python Code for Dead Code (Vulture)
-        run: poetry run vulture github-stats-analyser
+        run: poetry run vulture github_stats_analyser
