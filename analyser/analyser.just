@@ -10,16 +10,16 @@ unit-test:
 # ------------------------------------------------------------------------------
 
 ruff-lint:
-    ruff .
+    poetry run ruff .
 
 ruff-lint-fix:
-    ruff --fix .
+    poetry run ruff --fix .
 
 ruff-format:
-    ruff format --check .
+    poetry run ruff format --check .
 
 ruff-format-fix:
-    ruff format .
+    poetry run ruff format .
 
 # ------------------------------------------------------------------------------
 # Other Python Tools
