@@ -1,0 +1,6 @@
+files:
+  - README.md
+  - LICENSE
+  - CHANGELOG.md
+aliveStatusCodes:
+  - 200
