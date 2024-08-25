@@ -7,7 +7,7 @@ def main() -> None:
         github = Github()
         github_stats = github.get_repo("JackPlowman/github-stats")
         print(github_stats.get_languages())
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 - Log out errors before exiting
         print(e)
     finally:
         github.close()

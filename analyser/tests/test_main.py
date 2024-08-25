@@ -1,13 +1,13 @@
+from unittest.mock import MagicMock, patch
+
 from analyser.main import main
-from unittest.mock import patch, MagicMock
 
 FILE_PATH = "analyser.main"
 
 
 @patch(f"{FILE_PATH}.Github")
-def test_main(mock_github: MagicMock):
+def test_main(mock_github: MagicMock) -> Noneg:
     # Act
     main()
     # Assert
     mock_github.assert_called_once()
-
