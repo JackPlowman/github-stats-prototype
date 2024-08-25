@@ -33,8 +33,7 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "release-type": "simple",
-      "extra-files": ["README.md"]
+      "release-type": "simple"
     }
   }
 }
