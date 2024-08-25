@@ -20,9 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Poetry
-        shell: bash
-        run: |
-          pipx install poetry
+        run: pipx install poetry
 
       - name: Install Python 3.12 with Poetry Cache
         uses: actions/setup-python@v5
@@ -31,18 +29,16 @@ jobs:
           cache: "poetry"
 
       - name: Install Poetry Dependencies
-        shell: bash
-        run: |
-          poetry install
+        run: poetry install
 
       - name: Run Unit Tests
-        run: poetry run pytest --cov=github_stats_analyser --cov-report=xml
+        run: poetry run pytest --cov=github_stats_analyser --cov-report=xml --color=yes
+
+      - name: Override Coverage Source Path for Sonar
+        run: sed -i "s/<source>\/home\/runner\/work\/github-stats\/github-stats\/github_stats_analyser<\/source>/<source>\/github\/workspace\/github_stats_analyser<\/source>/g" /home/runner/work/github-stats/github-stats/coverage.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.python.coverage.reportPaths=coverage.xml
