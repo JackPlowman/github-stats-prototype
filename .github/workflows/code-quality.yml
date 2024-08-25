@@ -1,4 +1,3 @@
----
 name: "Code Quality"
 
 on:
@@ -35,3 +34,40 @@ jobs:
           VALIDATE_PYTHON_MYPY: false
           VALIDATE_PYTHON_PYLINT: false
           VALIDATE_PYTHON_RUFF: false
+
+  check-python-code-format-and-quality:
+    name: Check Python Code Format and Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Poetry
+        shell: bash
+        run: |
+          pipx install poetry
+
+      - name: Install Python 3.12 with Poetry Cache
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          cache: "poetry"
+
+      - name: Install Poetry Dependencies
+        shell: bash
+        run: |
+          poetry install
+
+      - name: Check Python Code Quality (Ruff)
+        run: poetry run ruff check github-stats-analyser
+
+      - name: Check Python Code Format (Ruff)
+        run: poetry run ruff format --check github-stats-analyser
+
+      - name: Check Python Code Security (Bandit)
+        run: poetry run bandit -r github-stats-analyser
+
+      - name: Check Python Code for Dead Code (Vulture)
+        run: poetry run vulture github-stats-analyser
