@@ -46,3 +46,4 @@ jobs:
         with:
           args: >
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.python.version=3.12
