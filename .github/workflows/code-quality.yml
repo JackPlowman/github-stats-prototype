@@ -44,20 +44,30 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python and Dependencies
-        uses: ./.github/workflows/setup-python.yml
+      - name: Install Poetry
+        shell: bash
+        run: |
+          pipx install poetry
+
+      - name: Install Python 3.12 with Poetry Cache
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          cache: "poetry"
+
+      - name: Install Poetry Dependencies
+        shell: bash
+        run: |
+          poetry install
 
       - name: Check Python Code Quality (Ruff)
-        run: ruff check github-stats-analyser
+        run: poetry run ruff check github-stats-analyser
 
       - name: Check Python Code Format (Ruff)
-        run: ruff format --check github-stats-analyser
+        run: poetry run ruff format --check github-stats-analyser
 
       - name: Check Python Code Security (Bandit)
-        run: bandit -r github-stats-analyser
+        run: poetry run bandit -r github-stats-analyser
 
       - name: Check Python Code for Dead Code (Vulture)
-        run: vulture github-stats-analyser
-
-
-
+        run: poetry run vulture github-stats-analyser
