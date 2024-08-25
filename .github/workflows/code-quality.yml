@@ -71,3 +71,17 @@ jobs:
 
       - name: Check Python Code for Dead Code (Vulture)
         run: poetry run vulture github_stats_analyser
+
+  check-markdown-links:
+    name: Check Markdown links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check Markdown links
+        uses: UmbrellaDocs/action-linkspector@v1.1.3
+        with:
+          reporter: github-pr-review
+          fail_on_error: true
