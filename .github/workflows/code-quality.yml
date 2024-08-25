@@ -26,7 +26,7 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           LINTER_RULES_PATH: .github/super-linter-configs
           YAML_ERROR_ON_WARNING: true
           VALIDATE_PYTHON_BLACK: false

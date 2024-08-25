@@ -36,5 +36,5 @@
       "release-type": "python"
     }
   },
-  "versioning":"always-bump-minor"
+  "versioning": "always-bump-minor"
 }
