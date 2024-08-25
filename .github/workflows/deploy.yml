@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - generate-gh-page
 
 permissions:
   contents: write
@@ -42,10 +43,13 @@ jobs:
         uses: extractions/setup-just@v2
 
       - name: Install Poetry Dependencies
-        run: poetry install
+        run: just analyser::install
 
       - name: Generate GitHub Pages
-        run: just analyser::generate-github-pages
+        run: just analyser::run
+
+      - name: Copy generated files to github pages folder
+        run: cp analyser/markdown /github-pages
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1

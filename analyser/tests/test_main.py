@@ -6,7 +6,7 @@ FILE_PATH = "analyser.main"
 
 
 @patch(f"{FILE_PATH}.Github")
-def test_main(mock_github: MagicMock) -> Noneg:
+def test_main(mock_github: MagicMock) -> None:
     # Act
     main()
     # Assert
