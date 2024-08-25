@@ -10,10 +10,10 @@ unit-test:
 # ------------------------------------------------------------------------------
 
 ruff-lint:
-    poetry run ruff .
+    poetry run ruff check .
 
 ruff-lint-fix:
-    poetry run ruff --fix .
+    poetry run ruff check . --fix
 
 ruff-format:
     poetry run ruff format --check .
