@@ -36,7 +36,10 @@ jobs:
           poetry install
 
       - name: Run Unit Tests
-        run: poetry run pytest --cov=github_stats_analyser --cov-report=xml
+        run: poetry run pytest --cov=github_stats_analyser --cov-report=xml --color=yes
+
+      - name: Ls
+        run: ls -a
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
