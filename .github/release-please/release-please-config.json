@@ -33,7 +33,8 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "release-type": "simple"
+      "release-type": "python"
     }
-  }
+  },
+  "versioning":"always-bump-minor"
 }
