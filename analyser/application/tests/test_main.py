@@ -20,7 +20,5 @@ def test_main(
     # Assert
     mock_github.assert_called_once()
     mock_set_up_markdown_file.assert_called_once_with("index", "GitHub Stats Repository")
-    mock_add_languages_sloc_table.assert_called_once_with(
-        mock_github.return_value, mock_set_up_markdown_file.return_value
-    )
+    mock_add_languages_sloc_table.assert_called_once_with(mock_set_up_markdown_file.return_value)
     mock_create_markdown_file.assert_called_once_with(mock_add_languages_sloc_table.return_value)
