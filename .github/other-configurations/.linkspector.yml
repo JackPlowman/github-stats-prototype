@@ -1,5 +1,7 @@
 files:
   - README.md
   - LICENSE
+excludedFiles:
+  - CHANGELOG.md
 aliveStatusCodes:
   - 200
