@@ -71,7 +71,7 @@ def test_determine_file_language() -> None:
     # Act
     response = determine_file_language(mock_path, mock_file_name, mock_catalogued_files, [mock_language])
     # Assert
-    assert response == {mock_language.name : [f"{mock_path}/{mock_file_name}"]}
+    assert response == {mock_language.name: [f"{mock_path}/{mock_file_name}"]}
 
 
 def test_check_for_excluded_dirs() -> None:
@@ -91,5 +91,3 @@ def test_count_files_per_language() -> None:
     response = count_files_per_language(file_types)
     # Assert
     assert response == {"Python": 2}
-
-
