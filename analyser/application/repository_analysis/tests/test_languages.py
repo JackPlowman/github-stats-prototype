@@ -2,6 +2,7 @@ from unittest.mock import MagicMock, patch
 
 from application.repository_analysis.languages import (
     add_languages_sloc_table,
+    catalogue_repository,
     check_for_excluded_dirs,
     clone_repo,
     count_files_per_language,
@@ -58,6 +59,24 @@ def test_clone_repo_exists(mock_repo: MagicMock, mock_path: MagicMock) -> None:
     clone_repo("JackPlowman", "github-stats")
     # Assert
     mock_repo.clone_from.assert_not_called()
+
+
+@patch(f"{FILE_PATH}.determine_file_language")
+@patch(f"{FILE_PATH}.check_for_excluded_dirs")
+@patch(f"{FILE_PATH}.Path")
+def test_catalogue_repository(
+    mock_path: MagicMock, mock_check_for_excluded_dirs: MagicMock, mock_determine_file_language: MagicMock
+) -> None:
+    # Arrange
+    mock_languages = []
+    file_path = "application/repos/github-stats"
+    mock_path.return_value.walk.return_value = [(mock_path, [], ["file1.py", "file2.py"])]
+    mock_check_for_excluded_dirs.return_value = False
+    mock_determine_file_language.return_value = expected = {"Python": ["file1.py", "file2.py"]}
+    # Act
+    response = catalogue_repository(file_path, mock_languages)
+    # Assert
+    assert response == expected
 
 
 def test_determine_file_language() -> None:
