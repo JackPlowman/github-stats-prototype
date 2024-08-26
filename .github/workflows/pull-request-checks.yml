@@ -16,4 +16,3 @@ jobs:
         uses: deepakputhraya/action-pr-title@v1.0.2
         with:
           allowed_prefixes: "feat:,fix:,bug:,ci:,refactor:,chore(,deps(,chore:,feat!,fix!:,refactor!:" # title should start with the given prefix
-
