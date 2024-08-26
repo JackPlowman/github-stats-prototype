@@ -9,7 +9,7 @@ def main() -> None:
     try:
         github = Github()
         markdown_file = set_up_markdown_file("index", "GitHub Stats Repository")
-        add_languages_sloc_table(markdown_file)
+        markdown_file = add_languages_sloc_table(markdown_file)
         create_markdown_file(markdown_file)
     except Exception as e:  # - Log out errors before exiting
         print(e)
