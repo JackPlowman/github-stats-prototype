@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, call, patch
 
-from application.software_lines_of_code.sloc import (
+from application.repository_analysis.languages import (
     add_languages_sloc_table,
     catalogue_repository,
     check_for_excluded_dirs,
@@ -9,7 +9,7 @@ from application.software_lines_of_code.sloc import (
     tally_file_types,
 )
 
-FILE_PATH = "application.software_lines_of_code.sloc"
+FILE_PATH = "application.repository_analysis.languages"
 
 
 @patch(f"{FILE_PATH}.count_files_per_language")
