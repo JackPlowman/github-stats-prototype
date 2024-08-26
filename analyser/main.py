@@ -1,6 +1,6 @@
 from github import Github
 
-from analyser.markdown import add_languages_sloc_table, create_markdown_file, set_up_markdown_file
+from .markdown import add_languages_sloc_table, create_markdown_file, set_up_markdown_file
 
 
 def main() -> None:
