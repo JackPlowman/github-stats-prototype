@@ -1,0 +1,15 @@
+# labels auto assigned to PR, keep in sync with labels.yml
+dependencies:
+  - pyproject.toml
+  - poetry.lock
+python:
+  - "*.py"
+github-pages:
+  - github-pages/**
+  - github-pages/**/*
+just:
+  - Justfile
+  - "*.just"
+automation:
+  - .github/*
+  - .github/**/*
