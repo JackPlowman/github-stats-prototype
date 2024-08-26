@@ -6,7 +6,13 @@ on:
       - main
     paths:
       - .github/other-configurations/labels.yml
-
+    pull_request:
+      types:
+        - opened
+        - synchronize
+        - reopened
+        - labeled
+        - unlabeled
 jobs:
   configure-labels:
     runs-on: ubuntu-latest
