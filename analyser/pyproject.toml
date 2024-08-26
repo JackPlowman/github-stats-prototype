@@ -74,3 +74,6 @@ convention = "google" # Use Google docstring convention.
 
 [tool.ruff.lint.isort]
 known-first-party = ["analyser", "markdown"]
+
+[tool.bandit]
+exclude_dirs = ["tests"]

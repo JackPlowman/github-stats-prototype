@@ -14,7 +14,3 @@ def main() -> None:
         print(e)
     finally:
         github.close()
-
-
-if __name__ == "__main__":
-    main()

@@ -47,7 +47,7 @@ ruff-format-fix:
 # ------------------------------------------------------------------------------
 
 bandit:
-  poetry run bandit -r application
+  poetry run bandit -r application -c pyproject.toml
 
 vulture:
   poetry run vulture application
