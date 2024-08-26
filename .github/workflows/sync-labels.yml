@@ -1,4 +1,4 @@
-name: Sync labels
+name: "Sync labels"
 
 on:
   push:
@@ -6,17 +6,10 @@ on:
       - main
     paths:
       - .github/other-configurations/labels.yml
-    pull_request:
-      types:
-        - opened
-        - synchronize
-        - reopened
-        - labeled
-        - unlabeled
+
 jobs:
   configure-labels:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -1,4 +1,3 @@
-
 # Default GitHub labels
 - color: d73a4a
   name: bug
@@ -32,19 +31,19 @@
   description: The issue is expected and will not be fixed
 # Release Please
 - color: ededed
-  name: 'autorelease: pending'
+  name: "autorelease: pending"
   description:
 - color: ededed
-  name: 'autorelease: tagged'
+  name: "autorelease: tagged"
   description:
 - color: ededed
-  name: 'autorelease: triggered'
+  name: "autorelease: triggered"
   description:
 - color: ededed
-  name: 'autorelease: snapshot'
+  name: "autorelease: snapshot"
   description:
 - color: ededed
-  name: 'autorelease: published'
+  name: "autorelease: published"
   description:
 # Languages
 - color: 2b67c6
@@ -53,4 +52,3 @@
 - color: 000000
   name: github_actions
   description: Pull requests that update GitHub Actions code
-
