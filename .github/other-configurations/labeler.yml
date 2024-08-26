@@ -3,13 +3,13 @@ dependencies:
   - pyproject.toml
   - poetry.lock
 python:
-  -*.py
+  - "*.py"
 github-pages:
   - github-pages/**
   - github-pages/**/*
 just:
   - Justfile
-  -*.just
+  - "*.just"
 automation:
   - .github/*
   - .github/**/*
