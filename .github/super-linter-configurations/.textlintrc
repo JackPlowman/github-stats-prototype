@@ -1,9 +1,7 @@
 {
   "rules": {
     "terminology": {
-      "exclude": [
-        "README"
-      ]
+      "defaultTerms": false
     }
   }
 }
