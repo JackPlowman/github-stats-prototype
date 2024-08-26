@@ -84,4 +84,4 @@ exclude_dirs = ["tests"]
 norecursedirs = "application/repos"
 
 [tool.vulture]
-ignore_names = ["language_type", "colour", "language_id"]
+ignore_names = ["language_type", "colour", "language_id", "group"]
