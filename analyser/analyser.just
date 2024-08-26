@@ -21,33 +21,33 @@ install:
   poetry install
 
 run:
-  poetry run python main.py
+  poetry run python -m application
 
 unit-test:
-    poetry run pytest --cov=. --cov-report=xml
+  poetry run pytest application --cov=application --cov-report=xml
 
-# ----------------------------------g--------------------------------------------
+# ------------------------------------------------------------------------------
 # Ruff
 # ------------------------------------------------------------------------------
 
 ruff-lint:
-    poetry run ruff check .
+  poetry run ruff check application
 
 ruff-lint-fix:
-    poetry run ruff check . --fix
+  poetry run ruff check application --fix
 
 ruff-format:
-    poetry run ruff format --check .
+  poetry run ruff format --check application
 
 ruff-format-fix:
-    poetry run ruff format .
+  poetry run ruff format application
 
 # ------------------------------------------------------------------------------
 # Other Python Tools
 # ------------------------------------------------------------------------------
 
 bandit:
-    poetry run bandit -r .
+  poetry run bandit -r application -c pyproject.toml
 
 vulture:
-    poetry run vulture .
+  poetry run vulture application
