@@ -14,7 +14,7 @@ def set_up_markdown_file(file_path: str, title: str) -> MdUtils:
     Returns:
         MdUtils: The markdown file object.
     """
-    build_directory = "markdown"
+    build_directory = "application/generated_markdown"
     return MdUtils(file_name=f"{build_directory}/{file_path}", title=title)
 
 

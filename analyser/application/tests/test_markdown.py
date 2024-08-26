@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock
 
-from analyser.markdown import add_languages_sloc_table, create_markdown_file, set_up_markdown_file
+from application.markdown import add_languages_sloc_table, create_markdown_file, set_up_markdown_file
 
 
 def test_set_up_markdown_file() -> None:
@@ -10,7 +10,7 @@ def test_set_up_markdown_file() -> None:
     # Act
     markdown_file = set_up_markdown_file(file_path, title)
     # Assert
-    assert markdown_file.file_name == f"markdown/{file_path}"
+    assert markdown_file.file_name == f"application/generated_markdown/{file_path}"
     assert markdown_file.title == f"\n{title}\n=======================\n"
 
 
@@ -27,11 +27,15 @@ def test_add_languages_sloc_table() -> None:
     # Arrange
     github = MagicMock()
     markdown_file = MagicMock()
+    github.get_repo.return_value.get_languages.return_value = {
+        "Python": 100,
+        "JavaScript": 200,
+    }
     # Act
     add_languages_sloc_table(github, markdown_file)
     # Assert
     github.get_repo.assert_called_once_with("JackPlowman/github-stats")
-    github.get_languages.assert_called_once()
+    github.get_repo.return_value.get_languages.assert_called_once()
     markdown_file.new_table.assert_called_once_with(
-        rows=4, columns=2, text=["Language", "Software Lines of Code", "Python", "JavaScript"]
+        rows=3, columns=2, text=["Language", "Software Lines of Code", "Python", 100, "JavaScript", 200]
     )

@@ -1,8 +1,8 @@
 from unittest.mock import MagicMock, patch
 
-from analyser.main import main
+from application.main import main
 
-FILE_PATH = "analyser.main"
+FILE_PATH = "application.main"
 
 
 @patch(f"{FILE_PATH}.create_markdown_file")

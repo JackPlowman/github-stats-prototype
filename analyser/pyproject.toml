@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "github_stats_analyser"
+name = "analyser"
 version = "0.1.0"
 description = ""
 authors = ["Jack Plowman <62281988+JackPlowman@users.noreply.github.com>"]
@@ -73,4 +73,4 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 convention = "google" # Use Google docstring convention.
 
 [tool.ruff.lint.isort]
-known-first-party = ["analyser"]
+known-first-party = ["analyser", "markdown"]
