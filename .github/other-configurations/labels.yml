@@ -1,0 +1,32 @@
+
+# Default GitHub labels
+- color: c13253
+  name: bug
+  description: Functionality that does not work as intended/expected
+- color: 18377f
+  name: documentation
+  description:
+- color: 0366d6
+  name: dependencies
+  description: Pull requests that update a dependency file
+- color: d23a4a
+  name: automation
+  description: Changes done to the .github folder
+- color: blocked
+  name: ed848a
+  description: The issue is blocked by another issue that has to be resolved first
+- color: cccccc
+  name: duplicate
+  description: This issue or pull request already exists
+- color: 84b6eb
+  name: enhancement
+  description: Functionality that enhances existing features
+- color: bbf796
+  name: good first issue
+  description: Good for newcomers
+- color: f9bbc0
+  name: help wanted
+  description: We are looking for community help
+- color: ffffff
+  name: wontfix
+  description: The issue is expected and will not be fixed
