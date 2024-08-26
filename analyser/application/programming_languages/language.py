@@ -12,3 +12,5 @@ class Language:
     colour: str  # Should be hex colour code
     extensions: list[str]
     language_id: int
+    filenames: list[str]  # Filenames with no extension or .filename
+    group: str | None = None
