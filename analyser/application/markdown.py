@@ -39,7 +39,7 @@ def add_languages_sloc_table(github: Github, markdown_file: MdUtils) -> MdUtils:
     """
     github_stats = github.get_repo("JackPlowman/github-stats")  # Get Repository class
     languages = github_stats.get_languages()  # Interpret repository data
-    table_headers = ["Language", "Software Lines of Code"]
+    table_headers = ["Language", "Software Bytes of Code"]
     languages_list = list(reduce(lambda x, y: x + y, languages.items()))
     markdown_file.new_table(
         rows=int(len(languages_list) / 2) + 1,
