@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, call, patch
+from unittest.mock import MagicMock, patch
 
 from application.repository_analysis.languages import (
     add_languages_sloc_table,
@@ -6,7 +6,7 @@ from application.repository_analysis.languages import (
     check_for_excluded_dirs,
     clone_repo,
     count_files_per_language,
-    tally_file_types,
+    determine_file_language,
 )
 
 FILE_PATH = "application.repository_analysis.languages"
@@ -33,10 +33,8 @@ def test_add_languages_sloc_table(
     )
     mock_clone_repo.assert_called_once_with("JackPlowman", "github-stats")
     mock_get_languages.assert_called_once_with()
-    mock_catalogue_repository.assert_called_once_with(mock_clone_repo.return_value)
-    mock_count_files_per_language.assert_called_once_with(
-        mock_catalogue_repository.return_value, mock_get_languages.return_value
-    )
+    mock_catalogue_repository.assert_called_once_with(mock_clone_repo.return_value, mock_get_languages.return_value)
+    mock_count_files_per_language.assert_called_once_with(mock_catalogue_repository.return_value)
 
 
 @patch(f"{FILE_PATH}.Path")
@@ -63,22 +61,36 @@ def test_clone_repo_exists(mock_repo: MagicMock, mock_path: MagicMock) -> None:
     mock_repo.clone_from.assert_not_called()
 
 
-@patch(f"{FILE_PATH}.tally_file_types")
+@patch(f"{FILE_PATH}.determine_file_language")
 @patch(f"{FILE_PATH}.check_for_excluded_dirs")
 @patch(f"{FILE_PATH}.Path")
 def test_catalogue_repository(
-    mock_path: MagicMock, mock_check_for_excluded_dirs: MagicMock, mock_tally_file_types: MagicMock
+    mock_path: MagicMock, mock_check_for_excluded_dirs: MagicMock, mock_determine_file_language: MagicMock
 ) -> None:
     # Arrange
+    mock_languages = []
+    file_path = "application/repos/github-stats"
     mock_path.return_value.walk.return_value = [(mock_path, [], ["file1.py", "file2.py"])]
-    mock_tally_file_types.return_value = {".py": ["file1.py", "file2.py"]}
     mock_check_for_excluded_dirs.return_value = False
+    mock_determine_file_language.return_value = expected = {"Python": ["file1.py", "file2.py"]}
     # Act
-    file_types = catalogue_repository(mock_path.return_value)
+    response = catalogue_repository(file_path, mock_languages)
     # Assert
-    mock_check_for_excluded_dirs.assert_called_once_with(mock_path, [])
-    mock_tally_file_types.assert_has_calls([call(mock_path, "file1.py", {}), call(mock_path, "file2.py", file_types)])
-    assert file_types == {".py": ["file1.py", "file2.py"]}
+    assert response == expected
+
+
+def test_determine_file_language() -> None:
+    # Arrange
+    mock_path = MagicMock()
+    mock_file_name = "file.py"
+    mock_catalogued_files = {}
+    mock_language = MagicMock()
+    mock_language.extensions = [".py"]
+    mock_language.name = "Python"
+    # Act
+    response = determine_file_language(mock_path, mock_file_name, mock_catalogued_files, [mock_language])
+    # Assert
+    assert response == {mock_language.name: [f"{mock_path}/{mock_file_name}"]}
 
 
 def test_check_for_excluded_dirs() -> None:
@@ -91,23 +103,10 @@ def test_check_for_excluded_dirs() -> None:
     mock_path.assert_not_called()
 
 
-def test_tally_file_types() -> None:
-    # Arrange
-    mock_path = MagicMock()
-    file_name = "file.py"
-    # Act
-    response = tally_file_types(mock_path, file_name, {})
-    # Assert
-    assert response == {".py": [f"{mock_path}/{file_name}"]}
-
-
 def test_count_files_per_language() -> None:
     # Arrange
-    mock_language = MagicMock()
-    mock_language.extensions = [".py"]
-    mock_language.name = "Python"
-    file_types = {".py": ["file1.py", "file2.py"]}
+    file_types = {"Python": ["file1.py", "file2.py"]}
     # Act
-    response = count_files_per_language(file_types, [mock_language])
+    response = count_files_per_language(file_types)
     # Assert
     assert response == {"Python": 2}

@@ -24,6 +24,8 @@ def get_languages() -> list[Language]:
             colour=language.get("color", ""),
             extensions=language.get("extensions", []),
             language_id=language["language_id"],
+            filenames=language.get("filenames", []),
+            group=language.get("group", None),
         )
         for key, language in languages.items()
     ]
