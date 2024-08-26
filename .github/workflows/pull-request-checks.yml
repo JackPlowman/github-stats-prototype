@@ -1,4 +1,4 @@
-name: "Code Quality"
+name: "Pull Request Checks"
 
 on:
   pull_request:
@@ -6,7 +6,6 @@ on:
 
 permissions:
   pull-requests: write
-
 
 jobs:
   check-pr-title:
@@ -16,5 +15,5 @@ jobs:
       - name: Check PR Title
         uses: deepakputhraya/action-pr-title@v1.0.2
         with:
-          allowed_prefixes: 'feat:,fix:,bug:,ci:,refactor:,chore(,deps(,chore:,feat!,fix!:,refactor!:' # title should start with the given prefix
+          allowed_prefixes: "feat:,fix:,bug:,ci:,refactor:,chore(,deps(,chore:,feat!,fix!:,refactor!:" # title should start with the given prefix
 
