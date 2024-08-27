@@ -22,4 +22,5 @@ automation:
 github_actions:
   - any:
       - changed-files:
-          - any-glob-to-any-file: [".github/workflows/*", ".github/workflows/**/*"]
+          - any-glob-to-any-file:
+              [".github/workflows/*", ".github/workflows/**/*"]
