@@ -3,6 +3,7 @@ dependencies:
   - any:
       - changed-files:
           - any-glob-to-any-file: ["poetry.lock", "pyproject.toml"]
+      - head-branch: ["dependabot/**"]
 python:
   - any:
       - changed-files:
