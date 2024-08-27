@@ -2,12 +2,12 @@
 dependencies:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["poetry.lock", "pyproject.toml"]
+          - any-glob-to-any-file: ["**/poetry.lock", "**/pyproject.toml"]
       - head-branch: ["^dependabot"]
 python:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["*.py"]
+          - any-glob-to-any-file: ["*.py", "**/*.py"]
 github-pages:
   - any:
       - changed-files:
@@ -15,7 +15,7 @@ github-pages:
 just:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["Justfile", "*.just"]
+          - any-glob-to-any-file: ["Justfile", "**/*.just"]
 github_actions:
   - any:
       - changed-files:
@@ -24,4 +24,4 @@ github_actions:
 tests:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["tests/**/*", "tests/*"]
+          - any-glob-to-any-file: ["**/tests/**"]

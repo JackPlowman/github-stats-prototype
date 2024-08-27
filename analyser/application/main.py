@@ -1,5 +1,5 @@
 from .markdown import create_markdown_file, set_up_markdown_file
-from .repository_analysis.languages import add_languages_sloc_table
+from .repository_analysis.repository_analysis import add_languages_sloc_table
 
 
 def main() -> None:
