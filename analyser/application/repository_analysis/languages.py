@@ -39,7 +39,7 @@ def determine_file_language(
         print(f"Catalogued file: {catalogued_files}")
     else:
         print(f"Multiple matches for {file_name}")
-        best_match_language = select_best_match(file_name,possible_matches)
+        best_match_language = select_best_match(file_name, possible_matches)
         catalogued_files = add_to_catalogued_files(shortened_file_path, catalogued_files, best_match_language)
     return catalogued_files
 
@@ -79,7 +79,7 @@ def count_files_per_language(file_types: dict[str, list[str]]) -> dict[str, int]
     return file_counts
 
 
-def select_best_match(file_name:str,possible_matches: list[Language]) -> Language:
+def select_best_match(file_name: str, possible_matches: list[Language]) -> Language:
     """Select the best match for a file.
 
     Args:
