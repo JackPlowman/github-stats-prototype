@@ -1,11 +1,11 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 from application.repository_analysis.languages import (
+    add_to_catalogued_files,
     count_files_per_language,
     determine_file_language,
-    add_to_catalogued_files,
-    select_best_match,
     language_match,
+    select_best_match,
 )
 
 FILE_PATH = "application.repository_analysis.languages"
@@ -33,7 +33,7 @@ def test_add_to_catalogued_files() -> None:
     mock_language.name = "Python"
     catalogued_files = {"Markdown": ["file1.md", "file2.md"]}
     # Act
-    response =add_to_catalogued_files(mock_catalogued_files, catalogued_files, mock_language)
+    response = add_to_catalogued_files(mock_catalogued_files, catalogued_files, mock_language)
     # Assert
     assert response == catalogued_files | {mock_language.name: ["test.py"]}
 
@@ -46,6 +46,7 @@ def test_count_files_per_language() -> None:
     # Assert
     assert response == {"Python": 2}
 
+
 def test_select_best_match() -> None:
     # Arrange
     mock_file_name = "file.py"
@@ -57,6 +58,7 @@ def test_select_best_match() -> None:
     # Assert
     assert response == mock_possible_matches[0]
 
+
 def test_language_match() -> None:
     # Arrange
     mock_language = MagicMock()
@@ -66,6 +68,7 @@ def test_language_match() -> None:
     response = language_match(mock_language, mock_prioritised_languages)
     # Assert
     assert response is True
+
 
 def test_language_match__no_match() -> None:
     # Arrange
