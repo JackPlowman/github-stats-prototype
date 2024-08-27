@@ -1,21 +1,21 @@
 # labels auto assigned to PR, keep in sync with labels.yml
 dependencies:
-- any:
-  - changed-files:
-    - any-glob-to-any-file:  ["poetry.lock", "pyproject.toml"]
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["poetry.lock", "pyproject.toml"]
 python:
   - any:
-    - changed-files:
-      - any-glob-to-any-file:  ["*.py"]
+      - changed-files:
+          - any-glob-to-any-file: ["*.py"]
 github-pages:
   - any:
-    - changed-files:
-      - any-glob-to-any-file:  ["github-pages/**", "github-pages/**/*"]
+      - changed-files:
+          - any-glob-to-any-file: ["github-pages/**", "github-pages/**/*"]
 just:
   - any:
-    - changed-files:
-      - any-glob-to-any-file:  ["Justfile", "*.just"]
+      - changed-files:
+          - any-glob-to-any-file: ["Justfile", "*.just"]
 automation:
   - any:
-    - changed-files:
-      - any-glob-to-any-file:  [".github/*", ".github/**/*"]
+      - changed-files:
+          - any-glob-to-any-file: [".github/*", ".github/**/*"]
