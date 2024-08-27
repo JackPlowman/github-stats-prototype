@@ -4,8 +4,8 @@ from itertools import chain
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from git import Repo
-
+from application.git_actions import clone_repo
+from application.markdown import create_markdown_file, set_up_markdown_file
 from application.programming_languages import get_languages
 
 from .languages import count_files_per_language, determine_file_language
@@ -16,49 +16,47 @@ if TYPE_CHECKING:
     from application.programming_languages.language import Language
 
 
-def add_languages_sloc_table(markdown_file: MdUtils) -> MdUtils:
-    """Add languages sloc table to the markdown file.
+def analyse_repository(repository: str) -> int:
+    """Analyse the repository.
+
+    Args:
+        repository (str): The repository name to analyse.
+
+    Returns:
+        int: The number of files in the repository.
+    """
+    owner_name, repository_name = repository.split("/", maxsplit=1)
+    path = clone_repo(owner_name, repository_name)
+    markdown_file = set_up_markdown_file(repository_name, f"{repository} Stats")
+    markdown_file, total_files = add_file_counts(markdown_file, path)
+    create_markdown_file(markdown_file)
+    return total_files
+
+
+def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils, int]:
+    """Add file counts to the markdown file.
 
     Args:
         markdown_file (MdUtils): The markdown file object.
+        path_to_repo (str): The path to the repository (already cloned).
 
     Returns:
         MdUtils: The markdown file object.
+        int: The total number of files in the repository.
     """
-    # Clone the target repository
-    path = clone_repo("JackPlowman", "github-stats")
     # Get the list of programming languages
     languages = get_languages()
     # Catalogue the repository
-    file_types = catalogue_repository(path, languages)
+    file_types = catalogue_repository(path_to_repo, languages)
     print(file_types)
     # Count the files per language
     file_counts = count_files_per_language(file_types)
     # Add the table of languages and file counts
     list_of_counts = zip(file_counts.keys(), file_counts.values())
     merged = list(chain.from_iterable(list_of_counts))
-    headers = ["Language", "File Count"]
-    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=headers + merged)
-    return markdown_file
-
-
-def clone_repo(owner_name: str, repository_name: str) -> str:
-    """Clone the repository and return the path to the repository.
-
-    Uses existing clone if available in application/repos.
-
-    Args:
-        owner_name (str): The owner name of the repository.
-        repository_name (str): The repository name.
-
-    Returns:
-        str: The path to the repository.
-    """
-    file_path = f"application/repos/{repository_name}"
-    if not Path.exists(Path(file_path)):
-        repo_url = f"https://github.com/{owner_name}/{repository_name}.git"
-        Repo.clone_from(repo_url, Path(file_path))
-    return file_path
+    file_count_headers = ["Language", "File Count"]
+    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged)
+    return markdown_file, sum(file_counts.values())
 
 
 def catalogue_repository(file_path: str, languages: list[Language]) -> dict[str, list[str]]:
