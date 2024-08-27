@@ -1,8 +1,11 @@
 from unittest.mock import MagicMock, patch
 
-from application.markdown import create_markdown_file, set_up_markdown_file, set_up_index_page
+from application.markdown import create_markdown_file, set_up_index_page, set_up_markdown_file
 from application.repository import Repository
+
 FILE_PATH = "application.markdown"
+
+
 def test_set_up_markdown_file() -> None:
     # Arrange
     file_path = "index"
@@ -21,6 +24,7 @@ def test_create_markdown_file() -> None:
     create_markdown_file(markdown_file)
     # Assert
     markdown_file.create_md_file.assert_called_once()
+
 
 @patch(f"{FILE_PATH}.set_up_markdown_file")
 @patch(f"{FILE_PATH}.create_markdown_file")
