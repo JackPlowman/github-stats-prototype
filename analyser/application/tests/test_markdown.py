@@ -1,6 +1,9 @@
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
-from application.markdown import create_markdown_file, set_up_markdown_file
+from application.markdown import create_markdown_file, set_up_index_page, set_up_markdown_file
+from application.repository import Repository
+
+FILE_PATH = "application.markdown"
 
 
 def test_set_up_markdown_file() -> None:
@@ -21,3 +24,18 @@ def test_create_markdown_file() -> None:
     create_markdown_file(markdown_file)
     # Assert
     markdown_file.create_md_file.assert_called_once()
+
+
+@patch(f"{FILE_PATH}.set_up_markdown_file")
+@patch(f"{FILE_PATH}.create_markdown_file")
+def test_set_up_index_page(
+    mock_create_markdown_file: MagicMock,
+    mock_set_up_markdown_file: MagicMock,
+) -> None:
+    # Arrange
+    repositories = [Repository("JackPlowman/github-stats", "A repository for analysing GitHub repositories.", 100)]
+    # Act
+    set_up_index_page(repositories)
+    # Assert
+    mock_set_up_markdown_file.assert_called_once_with("index", "GitHub Stats")
+    mock_create_markdown_file.assert_called_once_with(mock_set_up_markdown_file.return_value)
