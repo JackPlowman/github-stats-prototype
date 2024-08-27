@@ -55,3 +55,7 @@
 - color: 66A615
   name: just
   description: Pull requests that update Just code
+# Custom
+- color: 0E8A16
+  name: tests
+  description: Pull requests that update tests
