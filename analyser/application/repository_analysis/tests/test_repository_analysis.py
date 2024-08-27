@@ -4,9 +4,33 @@ from application.repository_analysis.repository_analysis import (
     add_file_counts,
     catalogue_repository,
     check_for_excluded_dirs,
+    analyse_repository,
 )
 
 FILE_PATH = "application.repository_analysis.repository_analysis"
+@patch(f"{FILE_PATH}.clone_repo")
+@patch(f"{FILE_PATH}.set_up_markdown_file")
+@patch(f"{FILE_PATH}.add_file_counts")
+@patch(f"{FILE_PATH}.create_markdown_file")
+def test_analyse_repository(
+    mock_create_markdown_file: MagicMock,
+    mock_add_file_counts: MagicMock,
+    mock_set_up_markdown_file: MagicMock,
+    mock_clone_repo: MagicMock,
+) -> None:
+    # Arrange
+    mock_clone_repo.return_value = repo_name= "JackPlowman/github-stats"
+    mock_set_up_markdown_file.return_value = markdown_file=MagicMock()
+    markdown_file_two = MagicMock()
+    mock_add_file_counts.return_value = (markdown_file_two, 100)
+    # Act
+    response=analyse_repository(repo_name)
+    # Assert
+    assert response == 100
+    mock_clone_repo.assert_called_once_with("JackPlowman", "github-stats")
+    mock_set_up_markdown_file.assert_called_once_with("github-stats",f"{repo_name} Stats")
+    mock_add_file_counts.assert_called_once_with(markdown_file, repo_name)
+    mock_create_markdown_file.assert_called_once_with(markdown_file_two)
 
 
 @patch(f"{FILE_PATH}.count_files_per_language")
