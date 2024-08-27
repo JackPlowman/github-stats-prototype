@@ -15,10 +15,6 @@ just:
   - any:
       - changed-files:
           - any-glob-to-any-file: ["Justfile", "*.just"]
-automation:
-  - any:
-      - changed-files:
-          - any-glob-to-any-file: [".github/*", ".github/**/*"]
 github_actions:
   - any:
       - changed-files:
