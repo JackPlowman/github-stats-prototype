@@ -1,96 +1,12 @@
 from __future__ import annotations
 
-from itertools import chain
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from git import Repo
-
-from application.programming_languages import get_languages
+from yaml import safe_load
 
 if TYPE_CHECKING:
-    from mdutils.mdutils import MdUtils
-
     from application.programming_languages.language import Language
-
-
-def add_languages_sloc_table(markdown_file: MdUtils) -> MdUtils:
-    """Add languages sloc table to the markdown file.
-
-    Args:
-        markdown_file (MdUtils): The markdown file object.
-
-    Returns:
-        MdUtils: The markdown file object.
-    """
-    # Clone the target repository
-    path = clone_repo("JackPlowman", "github-stats")
-    # Get the list of programming languages
-    languages = get_languages()
-    # Catalogue the repository
-    file_types = catalogue_repository(path, languages)
-    print(file_types)
-    # Count the files per language
-    file_counts = count_files_per_language(file_types)
-    # Add the table of languages and file counts
-    list_of_counts = zip(file_counts.keys(), file_counts.values())
-    merged = list(chain.from_iterable(list_of_counts))
-    headers = ["Language", "File Count"]
-    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=headers + merged)
-    return markdown_file
-
-
-def clone_repo(owner_name: str, repository_name: str) -> str:
-    """Clone the repository and return the path to the repository.
-
-    Uses existing clone if available in application/repos.
-
-    Args:
-        owner_name (str): The owner name of the repository.
-        repository_name (str): The repository name.
-
-    Returns:
-        str: The path to the repository.
-    """
-    file_path = f"application/repos/{repository_name}"
-    if not Path.exists(Path(file_path)):
-        repo_url = f"https://github.com/{owner_name}/{repository_name}.git"
-        Repo.clone_from(repo_url, Path(file_path))
-    return file_path
-
-
-def catalogue_repository(file_path: str, languages: list[Language]) -> dict[str, list[str]]:
-    """Catalogue the repository.
-
-    Args:
-        file_path (str): The path to the repository.
-        exclude_paths (list[str]): The list of excluded paths.
-        languages (list[Language]): The list of languages.
-
-    Returns:
-        file_types (dict[str, list[str]]): File type is the key and the list of file paths is the value.
-    """
-    catalogued_files = {}
-    iterator = Path(file_path).walk()
-    for root, _dirs, files in iterator:
-        if check_for_excluded_dirs(root, []):
-            continue
-        for file in files:
-            catalogued_files = determine_file_language(root, file, catalogued_files, languages)
-    return catalogued_files
-
-
-def check_for_excluded_dirs(root: Path, exclude_dirs: list[str]) -> bool:
-    """Check if the root directory is excluded.
-
-    Args:
-        root (Path): The root directory.
-        exclude_dirs (list[str]): The list of excluded directories.
-
-    Returns:
-        bool: True if the root directory is excluded, False otherwise.
-    """
-    return any(exclude_dir in root.__str__() for exclude_dir in exclude_dirs)
 
 
 def determine_file_language(
@@ -123,9 +39,8 @@ def determine_file_language(
         print(f"Catalogued file: {catalogued_files}")
     else:
         print(f"Multiple matches for {file_name}")
-        for language in possible_matches:
-            catalogued_files = add_to_catalogued_files(shortened_file_path, catalogued_files, language)
-            print(f"Match: {language.name}")
+        best_match_language = select_best_match(file_name,possible_matches)
+        catalogued_files = add_to_catalogued_files(shortened_file_path, catalogued_files, best_match_language)
     return catalogued_files
 
 
@@ -162,3 +77,45 @@ def count_files_per_language(file_types: dict[str, list[str]]) -> dict[str, int]
     for language in file_types:
         file_counts[language] = len(file_types[language])
     return file_counts
+
+
+def select_best_match(file_name:str,possible_matches: list[Language]) -> Language:
+    """Select the best match for a file.
+
+    Args:
+        file_name (str): The file name.
+        possible_matches (list[Language]): The list of possible matches.
+
+    Returns:
+        str: The best match for the file.
+    """
+    with Path.open("application/repository_analysis/prioritised_languages.yml") as file:
+        prioritised_languages = safe_load(file)["languages"]
+    best_matches = [
+        possible_match for possible_match in possible_matches if language_match(possible_match, prioritised_languages)
+    ]
+    print(f"Best matches for {file_name}: {best_matches}")
+
+    if len(best_matches) == 0:
+        return possible_matches[0]  # We have no prioritised languages, so just return the first match
+
+    if len(best_matches) == 1:
+        return best_matches[0]  # We have only one best match, perfect
+
+    # We have multiple best matches, so we select the first best match
+    return best_matches[0]
+
+
+def language_match(language: Language, prioritised_languages: list[str]) -> bool:
+    """Check if the language is in the prioritised languages.
+
+    Args:
+        language (Language): The language to check.
+        prioritised_languages (list[str]): The list of prioritised languages.
+
+    Returns:
+        bool: True if the language is in the prioritised languages, False otherwise.
+    """
+    language_name = language.name.lower()
+    prioritised_languages = [language.lower() for language in prioritised_languages]
+    return language_name in prioritised_languages
