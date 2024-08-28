@@ -13,6 +13,7 @@ gitpython = "3.1.43"
 requests = "2.32.3"
 pyyaml = "6.0.2"
 structlog = "24.4.0"
+pygithub = "2.4.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.6.2"
@@ -34,12 +35,12 @@ extend-select = ["E501"]
 select = ["ALL"]
 
 ignore = [
-    "COM812",  # Ignore due to conflict with Ruff formatter
-    "ISC001",  # Ignore due to conflict with Ruff formatter
-    "PLR2004",
-    "D104",
-    "D100",
-    "N999", # Ignore invalid module name
+  "COM812",  # Ignore due to conflict with Ruff formatter
+  "ISC001",  # Ignore due to conflict with Ruff formatter
+  "PLR2004",
+  "D104",
+  "D100",
+  "N999",    # Ignore invalid module name
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
@@ -48,21 +49,21 @@ unfixable = []
 
 # Exclude a variety of commonly ignored directories.
 exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".pytype",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
 ]
 
 # Allow unused variables when underscore-prefixed.
@@ -84,4 +85,10 @@ exclude_dirs = ["tests"]
 norecursedirs = "application/repos"
 
 [tool.vulture]
-ignore_names = ["language_type", "colour", "language_id", "group"]
+ignore_names = [
+  "language_type",
+  "colour",
+  "language_id",
+  "group",
+  "side_effect",
+]

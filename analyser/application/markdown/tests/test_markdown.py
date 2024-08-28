@@ -37,5 +37,5 @@ def test_set_up_index_page(
     # Act
     set_up_index_page(repositories)
     # Assert
-    mock_set_up_markdown_file.assert_called_once_with("index", "GitHub Stats")
+    mock_set_up_markdown_file.assert_called_once_with("index", "Active Repository Statistics")
     mock_create_markdown_file.assert_called_once_with(mock_set_up_markdown_file.return_value)
