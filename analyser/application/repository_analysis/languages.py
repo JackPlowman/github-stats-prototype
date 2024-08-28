@@ -3,10 +3,13 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from structlog import get_logger, stdlib
 from yaml import safe_load
 
 if TYPE_CHECKING:
     from application.programming_languages.language import Language
+
+logger: stdlib.BoundLogger = get_logger()
 
 
 def determine_file_language(
@@ -28,7 +31,7 @@ def determine_file_language(
     for language in languages:
         if file_name in language.filenames:
             catalogued_files = add_to_catalogued_files(shortened_file_path, catalogued_files, language)
-            print(f"Match: {language.name}")
+            logger.debug("Catalogued file", language=language.name, file=file_name)
             break
         if any(file_name.endswith(extension) for extension in language.extensions):
             possible_matches.append(language)
@@ -36,9 +39,9 @@ def determine_file_language(
         return catalogued_files
     if len(possible_matches) == 1:
         add_to_catalogued_files(shortened_file_path, catalogued_files, possible_matches[0])
-        print(f"Catalogued file: {catalogued_files}")
+        logger.debug("Catalogued file", language=possible_matches[0].name, file=file_name)
     else:
-        print(f"Multiple matches for {file_name}")
+        logger.debug("Multiple matches for file", file=file_name, matches=possible_matches)
         best_match_language = select_best_match(file_name, possible_matches)
         catalogued_files = add_to_catalogued_files(shortened_file_path, catalogued_files, best_match_language)
     return catalogued_files
@@ -94,7 +97,7 @@ def select_best_match(file_name: str, possible_matches: list[Language]) -> Langu
     best_matches = [
         possible_match for possible_match in possible_matches if language_match(possible_match, prioritised_languages)
     ]
-    print(f"Best matches for {file_name}: {best_matches}")
+    logger.debug("Best matches for file", file=file_name, matches=best_matches)
 
     if len(best_matches) == 0:
         return possible_matches[0]  # We have no prioritised languages, so just return the first match

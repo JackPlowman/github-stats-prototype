@@ -4,6 +4,8 @@ from itertools import chain
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from structlog import get_logger, stdlib
+
 from application.git_actions import clone_repo
 from application.markdown.markdown import create_markdown_file, set_up_markdown_file
 from application.programming_languages import get_languages
@@ -14,6 +16,8 @@ if TYPE_CHECKING:
     from mdutils.mdutils import MdUtils
 
     from application.programming_languages.language import Language
+
+logger: stdlib.BoundLogger = get_logger()
 
 
 def analyse_repository(repository: str) -> int:
@@ -30,6 +34,7 @@ def analyse_repository(repository: str) -> int:
     markdown_file = set_up_markdown_file(repository_name, f"{repository} Stats")
     markdown_file, total_files = add_file_counts(markdown_file, path)
     create_markdown_file(markdown_file)
+    logger.info("Finished analysing", total_files=total_files)
     return total_files
 
 
@@ -48,7 +53,6 @@ def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils,
     languages = get_languages()
     # Catalogue the repository
     file_types = catalogue_repository(path_to_repo, languages)
-    print(file_types)
     # Count the files per language
     file_counts = count_files_per_language(file_types)
     # Add the table of languages and file counts
@@ -56,6 +60,7 @@ def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils,
     merged = list(chain.from_iterable(list_of_counts))
     file_count_headers = ["Language", "File Count"]
     markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged)
+    logger.info("Languages Found", languages=list(file_counts.keys()))
     return markdown_file, sum(file_counts.values())
 
 

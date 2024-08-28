@@ -9,9 +9,10 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.12"
 mdutils = "1.6.0"
-gitpython = "^3.1.43"
-requests = "^2.32.3"
-pyyaml = "^6.0.2"
+gitpython = "3.1.43"
+requests = "2.32.3"
+pyyaml = "6.0.2"
+structlog = "24.4.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.6.2"
@@ -39,7 +40,6 @@ ignore = [
     "D104",
     "D100",
     "N999", # Ignore invalid module name
-    "T201" # Allow print for now
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
