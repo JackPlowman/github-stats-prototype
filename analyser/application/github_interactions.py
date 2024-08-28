@@ -38,7 +38,7 @@ def retrieve_repositories() -> list[str]:
         msg = "REPOSITORY_OWNER environment variable is not set."
         raise ValueError(msg)
     token = getenv("GITHUB_TOKEN", "")
-    if token == "":
+    if token == "":  # nosec B105 - Not hardcoded secret
         github = Github()
         logger.debug("Using unauthenticated GitHub API")
     else:
