@@ -15,13 +15,13 @@ def test_main(
     mock_set_up_index_page: MagicMock,
 ) -> None:
     # Arrange
-    mock_retrieve_repositories.return_value = ["JackPlowman/github-stats"]
+    full_name = "JackPlowman/github-stats"
+    description = "A test repository"
+    mock_retrieve_repositories.return_value = [MagicMock(full_name=full_name, description=description)]
     mock_analyse_repository.return_value = total = 100
     # Act
     main()
     # Assert
     mock_retrieve_repositories.assert_called_once_with()
-    mock_analyse_repository.assert_called_once_with("JackPlowman/github-stats")
-    mock_set_up_index_page.assert_called_once_with(
-        [Repository("JackPlowman/github-stats", "A repository for analysing GitHub repositories.", total)]
-    )
+    mock_analyse_repository.assert_called_once_with(full_name)
+    mock_set_up_index_page.assert_called_once_with([Repository(full_name, "A test repository", total)])

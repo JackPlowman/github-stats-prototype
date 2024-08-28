@@ -31,8 +31,12 @@ def clone_repo(owner_name: str, repository_name: str) -> str:
     return file_path
 
 
-def retrieve_repositories() -> list[str]:
-    """Retrieve the list of repositories to analyse."""
+def retrieve_repositories() -> list[object]:
+    """Retrieve the list of repositories to analyse.
+
+    Returns:
+        list[object]: The list of repositories.
+    """
     user = getenv("REPOSITORY_OWNER", "")
     if user == "":
         msg = "REPOSITORY_OWNER environment variable is not set."
@@ -44,7 +48,10 @@ def retrieve_repositories() -> list[str]:
     else:
         github = Github(token)
         logger.debug("Using authenticated GitHub API")
-    repositories_search = github.search_repositories(query=f"user:{user} archived:false")
-    repositories = [repository.full_name for repository in repositories_search]
-    logger.info("Repositories found", repositories_count=len(repositories), repositories=repositories)
+    repositories = github.search_repositories(query=f"user:{user} archived:false")
+    logger.info(
+        "Repositories found",
+        repositories_count=repositories.totalCount,
+        repositories=[repository.full_name for repository in repositories],
+    )
     return repositories
