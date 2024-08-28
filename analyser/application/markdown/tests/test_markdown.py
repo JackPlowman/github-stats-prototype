@@ -1,9 +1,9 @@
 from unittest.mock import MagicMock, patch
 
-from application.markdown import create_markdown_file, set_up_index_page, set_up_markdown_file
+from application.markdown.markdown import create_markdown_file, set_up_index_page, set_up_markdown_file
 from application.repository import Repository
 
-FILE_PATH = "application.markdown"
+FILE_PATH = "application.markdown.markdown"
 
 
 def test_set_up_markdown_file() -> None:

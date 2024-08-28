@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from application.git_actions import clone_repo
-from application.markdown import create_markdown_file, set_up_markdown_file
+from application.markdown.markdown import create_markdown_file, set_up_markdown_file
 from application.programming_languages import get_languages
 
 from .languages import count_files_per_language, determine_file_language
