@@ -1,12 +1,13 @@
 from __future__ import annotations
+
+from os import getenv
 from pathlib import Path
 
 from git import Repo
-from structlog import get_logger, stdlib
-from os import getenv
 from github import Github
-logger: stdlib.BoundLogger = get_logger()
+from structlog import get_logger, stdlib
 
+logger: stdlib.BoundLogger = get_logger()
 
 
 def clone_repo(owner_name: str, repository_name: str) -> str:
@@ -28,6 +29,7 @@ def clone_repo(owner_name: str, repository_name: str) -> str:
         logger.debug("Cloned repository", path=file_path)
 
     return file_path
+
 
 def retrieve_repositories() -> list[str]:
     """Retrieve the list of repositories to analyse."""

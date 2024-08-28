@@ -5,6 +5,7 @@ from structlog import configure, get_logger, make_filtering_bound_logger, stdlib
 
 logger: stdlib.BoundLogger = get_logger()
 
+
 def set_up_custom_logging() -> None:
     """Setup custom logging for the application."""
     level = INFO

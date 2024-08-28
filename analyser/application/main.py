@@ -29,4 +29,3 @@ def main() -> None:
     except Exception:
         logger.exception("An error occurred during the execution of the analyser.")
         raise
-
