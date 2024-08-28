@@ -1,5 +1,6 @@
 dirs:
   - ./
-
+excludedFiles:
+  - ./CHANGELOG.md
 aliveStatusCodes:
   - 200
