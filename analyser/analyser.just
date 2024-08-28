@@ -3,6 +3,8 @@
 # ------------------------------------------------------------------------------
 
 clean:
+  just analyser::clean-repos
+  just analyser::clean-generated-files
   find . \( \
     -name '__pycache__' -o \
     -name '.coverage' -o \
@@ -16,6 +18,11 @@ clean:
     -name 'db.sqlite3' \
   \) -print | xargs rm -rfv
 
+clean-repos:
+  rm -rf application/repos/** || true
+
+clean-generated-files:
+  rm application/generated_markdown/*.md || true
 
 install:
   poetry install
