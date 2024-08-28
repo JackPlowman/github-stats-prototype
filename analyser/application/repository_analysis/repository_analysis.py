@@ -48,7 +48,6 @@ def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils,
     languages = get_languages()
     # Catalogue the repository
     file_types = catalogue_repository(path_to_repo, languages)
-    print(file_types)
     # Count the files per language
     file_counts = count_files_per_language(file_types)
     # Add the table of languages and file counts

@@ -1,7 +1,8 @@
 from pathlib import Path
-
+from structlog import get_logger, stdlib
 from git import Repo
 
+logger: stdlib.BoundLogger = get_logger()
 
 def clone_repo(owner_name: str, repository_name: str) -> str:
     """Clone the repository and return the path to the repository.
@@ -19,4 +20,6 @@ def clone_repo(owner_name: str, repository_name: str) -> str:
     if not Path.exists(Path(file_path)):
         repo_url = f"https://github.com/{owner_name}/{repository_name}.git"
         Repo.clone_from(repo_url, Path(file_path))
+        logger.debug("Cloned repository", path=file_path)
+
     return file_path
