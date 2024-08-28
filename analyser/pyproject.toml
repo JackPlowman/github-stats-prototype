@@ -40,7 +40,6 @@ ignore = [
     "D104",
     "D100",
     "N999", # Ignore invalid module name
-    "T201" # Allow print for now
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
