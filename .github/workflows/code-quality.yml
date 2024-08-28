@@ -85,7 +85,7 @@ jobs:
         uses: UmbrellaDocs/action-linkspector@v1.1.3
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          config_file: .github/other-configurations/.linkspector.yaml
+          config_file: .github/other-configurations/.linkspector.yml
           reporter: github-pr-review
           fail_on_error: true
           filter_mode: nofilter
