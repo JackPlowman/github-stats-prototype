@@ -46,7 +46,7 @@ jobs:
 
       - name: Generate GitHub Pages
         env:
-            REPOSITORY_OWNER: ${{ github.repository_owner }}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: just analyser::run
 
       - name: Copy generated files to github pages folder
