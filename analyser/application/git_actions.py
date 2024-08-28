@@ -1,8 +1,10 @@
 from pathlib import Path
-from structlog import get_logger, stdlib
+
 from git import Repo
+from structlog import get_logger, stdlib
 
 logger: stdlib.BoundLogger = get_logger()
+
 
 def clone_repo(owner_name: str, repository_name: str) -> str:
     """Clone the repository and return the path to the repository.

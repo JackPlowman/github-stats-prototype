@@ -11,6 +11,3 @@ def set_up_custom_logging() -> None:
         level = DEBUG
     structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(level))
     structlog.configure()
-
-
-

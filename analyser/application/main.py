@@ -1,4 +1,4 @@
-from structlog import get_logger, stdlib, contextvars
+from structlog import contextvars, get_logger, stdlib
 
 from .custom_logging import set_up_custom_logging
 from .markdown.markdown import set_up_index_page
@@ -6,6 +6,7 @@ from .repository import Repository
 from .repository_analysis.repository_analysis import analyse_repository
 
 logger: stdlib.BoundLogger = get_logger()
+
 
 def main() -> None:
     """Entrypoint for Application."""

@@ -4,13 +4,13 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from structlog import get_logger, stdlib
-
 from yaml import safe_load
 
 if TYPE_CHECKING:
     from application.programming_languages.language import Language
 
 logger: stdlib.BoundLogger = get_logger()
+
 
 def determine_file_language(
     root: Path, file_name: str, catalogued_files: dict[str, list[str]], languages: list[Language]
