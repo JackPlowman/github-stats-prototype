@@ -2,6 +2,7 @@ from structlog import get_logger, stdlib
 from structlog.contextvars import bind_contextvars, unbind_contextvars
 
 from .custom_logging import set_up_custom_logging
+from .github_interactions import retrieve_repositories
 from .markdown.markdown import set_up_index_page
 from .repository import Repository
 from .repository_analysis.repository_analysis import analyse_repository
@@ -13,7 +14,7 @@ def main() -> None:
     """Entrypoint for Application."""
     set_up_custom_logging()
     try:
-        repositories = ["JackPlowman/github-stats"]
+        repositories = retrieve_repositories()
         repositories_stats = []
         for repository in repositories:
             bind_contextvars(repository=repository)
@@ -28,3 +29,4 @@ def main() -> None:
     except Exception:
         logger.exception("An error occurred during the execution of the analyser.")
         raise
+

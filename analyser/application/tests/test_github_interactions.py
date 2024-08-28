@@ -1,8 +1,8 @@
 from unittest.mock import MagicMock, patch
 
-from application.git_actions import clone_repo
+from application.github_interactions import clone_repo
 
-FILE_PATH = "application.git_actions"
+FILE_PATH = "application.github_interactions"
 
 
 @patch(f"{FILE_PATH}.Path")

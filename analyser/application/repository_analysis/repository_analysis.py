@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 from structlog import get_logger, stdlib
 
-from application.git_actions import clone_repo
+from application.github_interactions import clone_repo
 from application.markdown.markdown import create_markdown_file, set_up_markdown_file
 from application.programming_languages import get_languages
 

@@ -23,6 +23,9 @@ install:
 run:
   poetry run python -m application
 
+run-with-defaults:
+  REPOSITORY_OWNER=JackPlowman poetry run python -m application
+
 unit-test:
   poetry run pytest application --cov=application --cov-report=xml
 

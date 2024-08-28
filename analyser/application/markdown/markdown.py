@@ -39,7 +39,7 @@ def set_up_index_page(repositories: list[Repository]) -> None:
     Args:
         repositories (list[str]): The list of repositories.
     """
-    index_page = set_up_markdown_file("index", "GitHub Stats")
+    index_page = set_up_markdown_file("index", "Active Repository Statistics")
     table_contents = ["Name", "Description", "Identified Files count"]
     for repository in repositories:
         table_contents.extend(

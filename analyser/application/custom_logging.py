@@ -1,12 +1,13 @@
 from logging import DEBUG, INFO
 from os import getenv
 
-import structlog
+from structlog import configure, get_logger, make_filtering_bound_logger, stdlib
 
+logger: stdlib.BoundLogger = get_logger()
 
 def set_up_custom_logging() -> None:
     """Setup custom logging for the application."""
     level = INFO
     if getenv("DEBUG", "false").lower() == "true":
         level = DEBUG
-    structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(level))
+    configure(wrapper_class=make_filtering_bound_logger(level))
