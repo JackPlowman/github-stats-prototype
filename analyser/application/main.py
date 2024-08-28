@@ -18,11 +18,9 @@ def main() -> None:
         repositories_stats = []
         for repository in repositories:
             bind_contextvars(repository=repository)
-            logger.info("Analysing repository", repository=repository)
-            total_files = analyse_repository(repository)
-            repositories_stats.extend(
-                [Repository(repository, "A repository for analysing GitHub repositories.", total_files)]
-            )
+            logger.info("Analysing repository")
+            total_files = analyse_repository(repository.full_name)
+            repositories_stats.extend([Repository(repository.full_name, repository.description or "", total_files)])
         unbind_contextvars("repository")
 
         set_up_index_page(repositories_stats)
