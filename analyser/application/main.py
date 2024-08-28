@@ -1,4 +1,4 @@
-from .markdown import set_up_index_page
+from .markdown.markdown import set_up_index_page
 from .repository import Repository
 from .repository_analysis.repository_analysis import analyse_repository
 
