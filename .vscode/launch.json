@@ -12,6 +12,10 @@
       "request": "launch",
       "module": "application",
       "cwd": "${workspaceFolder}/analyser",
+      "env": {
+        "DEBUG": "true",
+        "REPOSITORY_OWNER": "JackPlowman"
+      },
       "console": "integratedTerminal",
       "justMyCode": true
     }
