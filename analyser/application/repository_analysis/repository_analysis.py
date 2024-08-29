@@ -55,13 +55,25 @@ def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils,
     file_types = catalogue_repository(path_to_repo, languages)
     # Count the files per language
     file_counts = count_files_per_language(file_types)
+    # Determine the colours for the languages
+    colours = [
+        github_language.colour if github_language.colour else "#000000"
+        for language in file_counts
+        for github_language in languages
+        if language == github_language.name
+    ]
+
+    # Replace for loop with list comprehension
+
     # Add the table of languages and file counts
-    language_and_counts = zip(file_counts.keys(), file_counts.values())
+    language_and_counts = zip(file_counts.keys(), file_counts.values(), colours)
     sorted_language_and_counts = sorted(language_and_counts, key=lambda x: x[1], reverse=True)
     logger.debug("Sorted language and counts", sorted_language_and_counts=sorted_language_and_counts)
     merged = list(chain.from_iterable(sorted_language_and_counts))
-    file_count_headers = ["Language", "File Count"]
-    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged)
+    file_count_headers = ["Language", "File Count", "Colour"]
+    markdown_file.new_table(
+        columns=len(file_count_headers), rows=len(file_counts) + 1, text=file_count_headers + merged
+    )
     logger.info("Languages Found", languages=list(file_counts.keys()))
     return markdown_file, sum(file_counts.values())
 
