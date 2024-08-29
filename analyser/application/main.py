@@ -1,10 +1,10 @@
 from structlog import get_logger, stdlib
 from structlog.contextvars import bind_contextvars, unbind_contextvars
 
+from .catalogued_repository import CataloguedRepository
 from .custom_logging import set_up_custom_logging
 from .github_interactions import retrieve_repositories
 from .markdown.markdown import set_up_index_page
-from .repository import Repository
 from .repository_analysis.repository_analysis import analyse_repository
 
 logger: stdlib.BoundLogger = get_logger()
@@ -20,7 +20,16 @@ def main() -> None:
             bind_contextvars(repository=repository)
             logger.info("Analysing repository")
             total_files = analyse_repository(repository.full_name)
-            repositories_stats.extend([Repository(repository.full_name, repository.description or "", total_files)])
+            repositories_stats.extend(
+                [
+                    CataloguedRepository(
+                        name=repository.full_name,
+                        description=repository.description or "",
+                        file_count=total_files,
+                        commit_count=repository.get_commits().totalCount,
+                    )
+                ]
+            )
         unbind_contextvars("repository")
 
         set_up_index_page(repositories_stats)

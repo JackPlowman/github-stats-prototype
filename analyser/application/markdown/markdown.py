@@ -39,11 +39,11 @@ def set_up_index_page(repositories: list[Repository]) -> None:
     """Set up the index page. Once all the repositories have been processed.
 
     Args:
-        repositories (list[str]): The list of repositories.
+        repositories (list[Repository]): The list of repositories.
     """
     index_page = set_up_markdown_file("index", "Active Repository Statistics")
-    table_contents = ["Name", "Description", "Identified Files count"]
-    sorted_repositories = sorted(repositories, key=lambda repository: repository.file_count, reverse=True)
+    table_contents = ["Name", "Description", "Identified Files count", "Commit count"]
+    sorted_repositories:list[Repository] = sorted(repositories, key=lambda repository: repository.file_count, reverse=True)
     logger.debug("Sorted table contents", sorted_repositories=sorted_repositories)
     for repository in sorted_repositories:
         table_contents.extend(
@@ -51,7 +51,8 @@ def set_up_index_page(repositories: list[Repository]) -> None:
                 Link(repository.name, repository.name.split("/", maxsplit=1)[1]),
                 repository.description,
                 repository.file_count,
+                repository.commit_count,
             ]
         )
-    index_page.new_table(columns=3, rows=len(repositories) + 1, text=table_contents, text_align="left")
+    index_page.new_table(columns=4, rows=len(repositories) + 1, text=table_contents, text_align="left")
     create_markdown_file(index_page)
