@@ -2,7 +2,7 @@
 documentation:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["README.md"]
+          - any-glob-to-any-file: ["README.md", "docs/**"]
 dependencies:
   - any:
       - changed-files:

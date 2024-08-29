@@ -1,5 +1,6 @@
 dirs:
   - ./
+  - ./docs
 excludedFiles:
   - ./CHANGELOG.md
 aliveStatusCodes:
