@@ -67,6 +67,9 @@ jobs:
       - name: Check Python Code Format (Ruff)
         run: just analyser::ruff-format
 
+      - name: Check Python Code Type (Pyright)
+        run: just analyser::pyright
+
       - name: Check Python Code for Dead Code (Vulture)
         run: just analyser::vulture
 

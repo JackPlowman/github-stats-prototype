@@ -59,5 +59,8 @@ ruff-format-fix:
 # Other Python Tools
 # ------------------------------------------------------------------------------
 
+pyright:
+  poetry run pyright application
+
 vulture:
   poetry run vulture application
