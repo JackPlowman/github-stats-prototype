@@ -1,6 +1,7 @@
-from ..repository_page import set_up_repository_pages
 from unittest.mock import MagicMock, patch
+
 from application.catalogued_repository import CataloguedRepository
+from application.pages.repository_page import set_up_repository_pages
 
 FILE_PATH = "application.pages.repository_page"
 

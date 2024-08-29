@@ -4,6 +4,7 @@ from application.pages.pages import create_markdown_pages
 
 FILE_PATH = "application.pages.pages"
 
+
 @patch(f"{FILE_PATH}.set_up_index_page")
 @patch(f"{FILE_PATH}.set_up_repository_pages")
 @patch(f"{FILE_PATH}.retrieve_repositories")

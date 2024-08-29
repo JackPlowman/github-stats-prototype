@@ -1,4 +1,5 @@
 from unittest.mock import MagicMock
+
 from application.markdown.markdown import create_markdown_file, set_up_markdown_file
 
 
