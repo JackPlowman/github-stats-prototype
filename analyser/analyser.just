@@ -36,6 +36,9 @@ run-with-defaults:
 unit-test:
   poetry run pytest application --cov=application --cov-report=xml
 
+unit-test-debug:
+  poetry run pytest application --cov=application --cov-report=xml -vvvv
+
 # ------------------------------------------------------------------------------
 # Ruff
 # ------------------------------------------------------------------------------

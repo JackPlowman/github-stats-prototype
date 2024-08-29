@@ -4,7 +4,7 @@ from os import getenv
 from pathlib import Path
 
 from git import Repo
-from github import Github
+from github import Github, PaginatedList, Repository
 from structlog import get_logger, stdlib
 
 logger: stdlib.BoundLogger = get_logger()
@@ -31,18 +31,18 @@ def clone_repo(owner_name: str, repository_name: str) -> str:
     return file_path
 
 
-def retrieve_repositories() -> list[object]:
+def retrieve_repositories() -> PaginatedList[Repository]:
     """Retrieve the list of repositories to analyse.
 
     Returns:
-        list[object]: The list of repositories.
+        PaginatedList[Repository]: The list of repositories.
     """
     user = getenv("REPOSITORY_OWNER", "")
     if user == "":
         msg = "REPOSITORY_OWNER environment variable is not set."
         raise ValueError(msg)
     token = getenv("GITHUB_TOKEN", "")
-    if token == "":  # nosec B105 - Not hardcoded secret
+    if token == "":
         github = Github()
         logger.debug("Using unauthenticated GitHub API")
     else:
