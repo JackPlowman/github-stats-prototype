@@ -42,7 +42,7 @@ def retrieve_repositories() -> PaginatedList[Repository]:
         msg = "REPOSITORY_OWNER environment variable is not set."
         raise ValueError(msg)
     token = getenv("GITHUB_TOKEN", "")
-    if token == "":  # nosec B105 - Not hardcoded secret
+    if token == "":
         github = Github()
         logger.debug("Using unauthenticated GitHub API")
     else:

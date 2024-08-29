@@ -13,5 +13,4 @@ def create_markdown_pages() -> None:
     repositories = retrieve_repositories()
     repositories_stats = []
     repositories_stats = set_up_repository_pages(repositories, repositories_stats)
-
     set_up_index_page(repositories_stats)
