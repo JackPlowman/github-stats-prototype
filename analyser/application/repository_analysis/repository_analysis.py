@@ -61,7 +61,7 @@ def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils,
     logger.debug("Sorted language and counts", sorted_language_and_counts=sorted_language_and_counts)
     merged = list(chain.from_iterable(sorted_language_and_counts))
     file_count_headers = ["Language", "File Count"]
-    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged,)
+    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged)
     logger.info("Languages Found", languages=list(file_counts.keys()))
     return markdown_file, sum(file_counts.values())
 
