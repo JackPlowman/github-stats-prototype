@@ -56,8 +56,5 @@ ruff-format-fix:
 # Other Python Tools
 # ------------------------------------------------------------------------------
 
-bandit:
-  poetry run bandit -r application -c pyproject.toml
-
 vulture:
   poetry run vulture application

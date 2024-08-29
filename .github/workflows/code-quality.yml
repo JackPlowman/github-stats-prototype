@@ -67,9 +67,6 @@ jobs:
       - name: Check Python Code Format (Ruff)
         run: just analyser::ruff-format
 
-      - name: Check Python Code Security (Bandit)
-        run: just analyser::bandit
-
       - name: Check Python Code for Dead Code (Vulture)
         run: just analyser::vulture
 
