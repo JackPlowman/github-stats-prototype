@@ -15,6 +15,10 @@
     },
     {
       "section": "🧰 Maintenance",
+      "type": "refactor"
+    },
+    {
+      "section": "🧰 Maintenance",
       "type": "build"
     },
     {
