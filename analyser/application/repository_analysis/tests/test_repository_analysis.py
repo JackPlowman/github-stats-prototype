@@ -51,7 +51,7 @@ def test_add_file_counts(
     add_file_counts(markdown_file, "application/repos/github-stats")
     # Assert
     markdown_file.new_table.assert_called_once_with(
-        columns=2, rows=3, text=["Language", "File Count", "Python", 100, "Javascript", 200]
+        columns=2, rows=3, text=['Language', 'File Count', 'Javascript', 200, 'Python', 100]
     )
     mock_get_languages.assert_called_once_with()
     mock_catalogue_repository.assert_called_once_with(path_to_repo, mock_get_languages.return_value)
