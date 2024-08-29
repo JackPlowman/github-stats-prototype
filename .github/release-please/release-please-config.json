@@ -14,6 +14,10 @@
       "type": "deps"
     },
     {
+      "section": "📝 Documentation",
+      "type": "docs"
+    },
+    {
       "section": "🧰 Maintenance",
       "type": "refactor"
     },
@@ -28,10 +32,6 @@
     {
       "section": "🧰 Maintenance",
       "type": "ci"
-    },
-    {
-      "section": "🧰 Maintenance",
-      "type": "docs"
     }
   ],
   "packages": {
