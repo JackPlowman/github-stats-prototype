@@ -37,10 +37,9 @@ select = ["ALL"]
 ignore = [
   "COM812",  # Ignore due to conflict with Ruff formatter
   "ISC001",  # Ignore due to conflict with Ruff formatter
-  "PLR2004",
-  "D104",
-  "D100",
-  "N999",    # Ignore invalid module name
+  "PLR2004", # Ignore magic value
+  "D104",    # Ignore missing docstring in public package
+  "D100",    # Ignore missing docstring in public module
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
