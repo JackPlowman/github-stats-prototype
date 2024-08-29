@@ -4,18 +4,15 @@ from itertools import chain
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from pygount import ProjectSummary, SourceAnalysis
 from structlog import get_logger, stdlib
 
 from application.github_interactions import clone_repo
 from application.markdown.markdown import create_markdown_file, set_up_markdown_file
-from application.programming_languages import get_languages
-
-from .languages import count_files_per_language, determine_file_language
 
 if TYPE_CHECKING:
     from mdutils.mdutils import MdUtils
 
-    from application.programming_languages.language import Language
 
 logger: stdlib.BoundLogger = get_logger()
 
@@ -32,69 +29,62 @@ def analyse_repository(repository: str) -> int:
     owner_name, repository_name = repository.split("/", maxsplit=1)
     path = clone_repo(owner_name, repository_name)
     markdown_file = set_up_markdown_file(repository_name, f"{repository} Stats")
-    markdown_file, total_files = add_file_counts(markdown_file, path)
+    markdown_file, total_files = add_language_summary_stats(markdown_file, path, repository_name)
     create_markdown_file(markdown_file)
-    logger.info("Finished analysing", total_files=total_files)
     return total_files
 
 
-def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils, int]:
-    """Add file counts to the markdown file.
+def add_language_summary_stats(markdown_file: MdUtils, path_to_repo: str, repository_name: str) -> tuple[MdUtils, int]:
+    """Add language summary stats to the markdown file.
 
     Args:
-        markdown_file (MdUtils): The markdown file object.
+        markdown_file (MdUtils): The markdown file object to add the stats to.
         path_to_repo (str): The path to the repository (already cloned).
-
-    Returns:
-        MdUtils: The markdown file object.
-        int: The total number of files in the repository.
+        repository_name (str): The name of the repository.
     """
-    # Get the list of programming languages
-    languages = get_languages()
-    # Catalogue the repository
-    file_types = catalogue_repository(path_to_repo, languages)
-    # Count the files per language
-    file_counts = count_files_per_language(file_types)
-    # Add the table of languages and file counts
-    language_and_counts = zip(file_counts.keys(), file_counts.values())
-    sorted_language_and_counts = sorted(language_and_counts, key=lambda x: x[1], reverse=True)
-    logger.debug("Sorted language and counts", sorted_language_and_counts=sorted_language_and_counts)
-    merged = list(chain.from_iterable(sorted_language_and_counts))
-    file_count_headers = ["Language", "File Count"]
-    markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged)
-    logger.info("Languages Found", languages=list(file_counts.keys()))
-    return markdown_file, sum(file_counts.values())
+    # Get the project summary
+    project_summary = get_language_summary_stats(path_to_repo, repository_name)
+    # Set up table data
+    headers = ["Language", "File Count", "SLOC", "Code Percentage"]
+    # total_without_uncountable = project_summary.total_code_count - project_summary._language_to_language_summary_map["__unknown__"].code_count  # noqa: ERA001, E501
+    text_content = [
+        (
+            language_summary.language,
+            language_summary.file_count,
+            language_summary.source_count,
+            round(
+                language_summary.code_count / project_summary.total_code_count * 100
+                if language_summary.code_count != 0
+                else 0,
+                2,
+            ),
+        )
+        for language_summary in project_summary.language_to_language_summary_map.values()
+    ]
+    sorted_languages = sorted(text_content, key=lambda text: text[3], reverse=True)
+    table_content = headers + list(chain.from_iterable(sorted_languages))
+    # Add the table
+    markdown_file.new_header(level=1, title="Language Summary")
+    markdown_file.new_table(columns=len(headers), rows=len(text_content) + 1, text=table_content, text_align="center")
+    return markdown_file, project_summary.total_file_count
 
 
-def catalogue_repository(file_path: str, languages: list[Language]) -> dict[str, list[str]]:
-    """Catalogue the repository.
+def get_language_summary_stats(path_to_repo: str, repository_name: str) -> ProjectSummary:
+    """Add the language summary stats to the markdown file.
 
     Args:
-        file_path (str): The path to the repository.
-        exclude_paths (list[str]): The list of excluded paths.
-        languages (list[Language]): The list of languages.
-
-    Returns:
-        file_types (dict[str, list[str]]): File type is the key and the list of file paths is the value.
+        path_to_repo (str): The path to the repository (already cloned).
+        repository_name (str): The name of the repository.
     """
-    catalogued_files = {}
-    iterator = Path(file_path).walk()
-    for root, _dirs, files in iterator:
-        if check_for_excluded_dirs(root, []):
-            continue
+    # Set up the project summary
+    project_summary = ProjectSummary()
+    # Scan the repository
+    iterator = Path(path_to_repo).walk()
+    for _root, _dirs, files in iterator:
         for file in files:
-            catalogued_files = determine_file_language(root, file, catalogued_files, languages)
-    return catalogued_files
-
-
-def check_for_excluded_dirs(root: Path, exclude_dirs: list[str]) -> bool:
-    """Check if the root directory is excluded.
-
-    Args:
-        root (Path): The root directory.
-        exclude_dirs (list[str]): The list of excluded directories.
-
-    Returns:
-        bool: True if the root directory is excluded, False otherwise.
-    """
-    return any(exclude_dir in root.__str__() for exclude_dir in exclude_dirs)
+            file_path = f"{_root.__str__()}/{file}"
+            logger.debug("Analysing file", file=file_path)
+            project_summary.add(SourceAnalysis.from_file(file_path, repository_name))
+    logger.info("Finished analysing", total_files=project_summary.total_file_count)
+    # Return the project summary
+    return project_summary
