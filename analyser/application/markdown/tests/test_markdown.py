@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 
-from application.markdown.markdown import create_markdown_file, set_up_index_page, set_up_markdown_file
 from application.catalogued_repository import CataloguedRepository
+from application.markdown.markdown import create_markdown_file, set_up_index_page, set_up_markdown_file
 
 FILE_PATH = "application.markdown.markdown"
 
@@ -33,7 +33,9 @@ def test_set_up_index_page(
     mock_set_up_markdown_file: MagicMock,
 ) -> None:
     # Arrange
-    repositories = [CataloguedRepository("JackPlowman/github-stats", "A repository for analysing GitHub repositories.", 100,10)]
+    repositories = [
+        CataloguedRepository("JackPlowman/github-stats", "A repository for analysing GitHub repositories.", 100, 10)
+    ]
     # Act
     set_up_index_page(repositories)
     # Assert

@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 
-from application.main import main
 from application.catalogued_repository import CataloguedRepository
+from application.main import main
 
 FILE_PATH = "application.main"
 
@@ -26,4 +26,6 @@ def test_main(
     # Assert
     mock_retrieve_repositories.assert_called_once_with()
     mock_analyse_repository.assert_called_once_with(full_name)
-    mock_set_up_index_page.assert_called_once_with([CataloguedRepository(full_name, "A test repository", total, commit_count)])
+    mock_set_up_index_page.assert_called_once_with(
+        [CataloguedRepository(full_name, "A test repository", total, commit_count)]
+    )

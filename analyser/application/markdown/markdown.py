@@ -43,7 +43,9 @@ def set_up_index_page(repositories: list[CataloguedRepository]) -> None:
     """
     index_page = set_up_markdown_file("index", "Active Repository Statistics")
     table_contents = ["Name", "Description", "Identified Files count", "Commit count"]
-    sorted_repositories:list[CataloguedRepository] = sorted(repositories, key=lambda repository: repository.file_count, reverse=True)
+    sorted_repositories: list[CataloguedRepository] = sorted(
+        repositories, key=lambda repository: repository.file_count, reverse=True
+    )
     logger.debug("Sorted table contents", sorted_repositories=sorted_repositories)
     for repository in sorted_repositories:
         table_contents.extend(
