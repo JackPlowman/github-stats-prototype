@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 
+from application.catalogued_repository import CataloguedRepository
 from application.main import main
-from application.repository import Repository
 
 FILE_PATH = "application.main"
 
@@ -17,11 +17,15 @@ def test_main(
     # Arrange
     full_name = "JackPlowman/github-stats"
     description = "A test repository"
-    mock_retrieve_repositories.return_value = [MagicMock(full_name=full_name, description=description)]
+    mock_repository = MagicMock(full_name=full_name, description=description)
+    mock_repository.get_commits.return_value.totalCount = commit_count = 10
+    mock_retrieve_repositories.return_value = [mock_repository]
     mock_analyse_repository.return_value = total = 100
     # Act
     main()
     # Assert
     mock_retrieve_repositories.assert_called_once_with()
     mock_analyse_repository.assert_called_once_with(full_name)
-    mock_set_up_index_page.assert_called_once_with([Repository(full_name, "A test repository", total)])
+    mock_set_up_index_page.assert_called_once_with(
+        [CataloguedRepository(full_name, "A test repository", total, commit_count)]
+    )
