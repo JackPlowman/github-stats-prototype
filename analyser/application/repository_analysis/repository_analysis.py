@@ -33,9 +33,7 @@ def analyse_repository(repository: str) -> int:
     return total_files
 
 
-def add_language_summary_stats(
-    markdown_file: MdUtils, path_to_repo: str, repository_name: str
-) -> tuple[MdUtils, int]:
+def add_language_summary_stats(markdown_file: MdUtils, path_to_repo: str, repository_name: str) -> tuple[MdUtils, int]:
     """Add language summary stats to the markdown file.
 
     Args:
@@ -53,11 +51,16 @@ def add_language_summary_stats(
             language_summary.language,
             language_summary.file_count,
             language_summary.source_count,
-            round(language_summary.code_count/project_summary.total_code_count*100 if  language_summary.code_count != 0 else 0, 2),
+            round(
+                language_summary.code_count / project_summary.total_code_count * 100
+                if language_summary.code_count != 0
+                else 0,
+                2,
+            ),
         )
         for language_summary in project_summary.language_to_language_summary_map.values()
     ]
-    sorted_languages = sorted(text_content, key=lambda text: text[3],reverse=True)
+    sorted_languages = sorted(text_content, key=lambda text: text[3], reverse=True)
     table_content = headers + list(chain.from_iterable(sorted_languages))
     # Add the table
     markdown_file.new_header(level=1, title="Language Summary")
