@@ -58,6 +58,7 @@ def add_file_counts(markdown_file: MdUtils, path_to_repo: str) -> tuple[MdUtils,
     # Add the table of languages and file counts
     language_and_counts = zip(file_counts.keys(), file_counts.values())
     sorted_language_and_counts = sorted(language_and_counts, key=lambda x: x[1], reverse=True)
+    logger.debug("Sorted language and counts", sorted_language_and_counts=sorted_language_and_counts)
     merged = list(chain.from_iterable(sorted_language_and_counts))
     file_count_headers = ["Language", "File Count"]
     markdown_file.new_table(columns=2, rows=len(file_counts) + 1, text=file_count_headers + merged)

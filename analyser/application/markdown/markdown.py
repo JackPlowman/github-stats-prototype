@@ -3,9 +3,11 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from mdutils.mdutils import MdUtils
+from structlog import get_logger, stdlib
 
 from .components.link import Link
 
+logger: stdlib.BoundLogger = get_logger()
 if TYPE_CHECKING:
     from application.repository import Repository
 
@@ -41,7 +43,9 @@ def set_up_index_page(repositories: list[Repository]) -> None:
     """
     index_page = set_up_markdown_file("index", "Active Repository Statistics")
     table_contents = ["Name", "Description", "Identified Files count"]
-    for repository in repositories:
+    sorted_repositories = sorted(repositories, key=lambda repository: repository.file_count, reverse=True)
+    logger.debug("Sorted table contents", sorted_repositories=sorted_repositories)
+    for repository in sorted_repositories:
         table_contents.extend(
             [
                 Link(repository.name, repository.name.split("/", maxsplit=1)[1]),
@@ -49,5 +53,5 @@ def set_up_index_page(repositories: list[Repository]) -> None:
                 repository.file_count,
             ]
         )
-    index_page.new_table(columns=3, rows=len(repositories) + 1, text=table_contents)
+    index_page.new_table(columns=3, rows=len(repositories) + 1, text=table_contents, text_align="left")
     create_markdown_file(index_page)
