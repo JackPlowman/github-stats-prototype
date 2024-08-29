@@ -162,5 +162,4 @@ cython_debug/
 #.idea/
 
 # Cache Folders
-.pytest_cache
 .ruff_cache

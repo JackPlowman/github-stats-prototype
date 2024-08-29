@@ -11,4 +11,4 @@
 
 ## Development Gotchas
 
-All files that are excluded from git using `.gitignore` are excluded Visual Studio Code's explorer too.
+Cache files are excluded from the Visual Studio Code explorer.
