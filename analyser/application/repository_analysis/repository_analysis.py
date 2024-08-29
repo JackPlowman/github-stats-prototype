@@ -1,11 +1,12 @@
 from __future__ import annotations
 
+from itertools import chain
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 from pygount import ProjectSummary, SourceAnalysis
 from structlog import get_logger, stdlib
-from itertools import chain
+
 from application.github_interactions import clone_repo
 from application.markdown.markdown import create_markdown_file, set_up_markdown_file
 
@@ -45,7 +46,7 @@ def add_language_summary_stats(markdown_file: MdUtils, path_to_repo: str, reposi
     project_summary = get_language_summary_stats(path_to_repo, repository_name)
     # Set up table data
     headers = ["Language", "File Count", "SLOC", "Code Percentage"]
-    # total_without_uncountable = project_summary.total_code_count - project_summary._language_to_language_summary_map["__unknown__"].code_count  # noqa: ERA001
+    # total_without_uncountable = project_summary.total_code_count - project_summary._language_to_language_summary_map["__unknown__"].code_count  # noqa: ERA001, E501
     text_content = [
         (
             language_summary.language,

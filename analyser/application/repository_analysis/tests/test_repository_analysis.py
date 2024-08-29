@@ -1,9 +1,9 @@
 from unittest.mock import MagicMock, patch
 
 from application.repository_analysis.repository_analysis import (
-    get_language_summary_stats,
-    analyse_repository,
     add_language_summary_stats,
+    analyse_repository,
+    get_language_summary_stats,
 )
 
 FILE_PATH = "application.repository_analysis.repository_analysis"
@@ -14,12 +14,11 @@ FILE_PATH = "application.repository_analysis.repository_analysis"
 @patch(f"{FILE_PATH}.set_up_markdown_file")
 @patch(f"{FILE_PATH}.clone_repo")
 def test_analyse_repository(
-    mock_clone_repo: MagicMock,
-    mock_set_up_markdown_file: MagicMock,
+    _mock_clone_repo: MagicMock,
+    _mock_set_up_markdown_file: MagicMock,
     mock_add_language_summary_stats: MagicMock,
-    mock_create_markdown_file: MagicMock,
+    _mock_create_markdown_file: MagicMock,
 ) -> None:
-    #
     total = 100
     mock_add_language_summary_stats.return_value = MagicMock(), total
     repository = "JackPlowman/github-stats"
@@ -30,16 +29,17 @@ def test_analyse_repository(
     # Assert
     assert result == total
 
+
 @patch(f"{FILE_PATH}.sorted")
 @patch(f"{FILE_PATH}.get_language_summary_stats")
-def test_add_language_summary_stats(mock_get_language_summary_stats:MagicMock, mock_sorted:MagicMock) -> None:
+def test_add_language_summary_stats(mock_get_language_summary_stats: MagicMock, _mock_sorted: MagicMock) -> None:
     # Arrange
     markdown_file = MagicMock()
     path_to_repo = "path/to/repo"
     repository_name = "repo"
     mock_get_language_summary_stats.return_value = mock_get_language_return = MagicMock()
     mock_get_language_return.total_file_count = 100
-    mock_get_language_return.language_to_language_summary_map.values.return_value = [
+    mock_get_language_return.language_to_language_summary_map.values.return_value = [  # noqa: PD011
         MagicMock(language="Python", file_count=10, source_count=100, code_count=100),
         MagicMock(language="JavaScript", file_count=10, source_count=100, code_count=100),
     ]
@@ -58,7 +58,7 @@ def test_get_language_summary_stats(
     path_to_repo = "path/to/repo"
     repository_name = "repo"
     mock_project_summary.total_file_count = 100
-    mock_project_summary.language_to_language_summary_map.values.return_value = [
+    mock_project_summary.language_to_language_summary_map.values.return_value = [  # noqa: PD011
         MagicMock(language="Python", file_count=10, source_count=100, code_count=100),
         MagicMock(language="JavaScript", file_count=10, source_count=100, code_count=100),
     ]
