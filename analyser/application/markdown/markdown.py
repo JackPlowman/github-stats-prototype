@@ -9,7 +9,7 @@ from .components.link import Link
 
 logger: stdlib.BoundLogger = get_logger()
 if TYPE_CHECKING:
-    from application.repository import Repository
+    from application.catalogued_repository import CataloguedRepository
 
 
 def set_up_markdown_file(file_path: str, title: str) -> MdUtils:
@@ -35,15 +35,15 @@ def create_markdown_file(markdown_file: MdUtils) -> None:
     markdown_file.create_md_file()
 
 
-def set_up_index_page(repositories: list[Repository]) -> None:
+def set_up_index_page(repositories: list[CataloguedRepository]) -> None:
     """Set up the index page. Once all the repositories have been processed.
 
     Args:
-        repositories (list[Repository]): The list of repositories.
+        repositories (list[CataloguedRepository]): The list of repositories.
     """
     index_page = set_up_markdown_file("index", "Active Repository Statistics")
     table_contents = ["Name", "Description", "Identified Files count", "Commit count"]
-    sorted_repositories:list[Repository] = sorted(repositories, key=lambda repository: repository.file_count, reverse=True)
+    sorted_repositories:list[CataloguedRepository] = sorted(repositories, key=lambda repository: repository.file_count, reverse=True)
     logger.debug("Sorted table contents", sorted_repositories=sorted_repositories)
     for repository in sorted_repositories:
         table_contents.extend(
