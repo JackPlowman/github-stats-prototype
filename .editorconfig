@@ -8,9 +8,6 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*{.just,Justfile}]
-indent_style = tab
-
 [*.py]
 indent_size = 4
 
