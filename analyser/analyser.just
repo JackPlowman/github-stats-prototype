@@ -19,10 +19,10 @@ clean:
   \) -print | xargs rm -rfv
 
 clean-repos:
-  rm -rf application/repos/** || true
+  rm -rf repos/** || true
 
 clean-generated-files:
-  rm application/generated_markdown/*.md || true
+  rm generated_markdown/*.md || true
 
 install:
   poetry install
