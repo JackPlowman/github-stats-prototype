@@ -1,4 +1,5 @@
 mod analyser 'analyser/analyser.just'
+mod dashboard 'dashboard/dashboard.just'
 
 # ------------------------------------------------------------------------------
 # Prettier
