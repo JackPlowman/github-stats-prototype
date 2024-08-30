@@ -50,6 +50,7 @@ jobs:
         uses: withastro/action@v2
         with:
           path: ./dashboard
+          node-version: 22
 
   deploy:
     needs: build
