@@ -11,8 +11,6 @@ on:
 permissions:
   contents: read
 
-
-
 jobs:
   CodeQL-Analysis:
     strategy:
