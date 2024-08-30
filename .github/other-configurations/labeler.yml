@@ -6,8 +6,7 @@ documentation:
 dependencies:
   - any:
       - changed-files:
-          - any-glob-to-any-file:
-              ["**/poetry.lock", "**/pyproject.toml", "**/package.json"]
+          - any-glob-to-any-file: ["**/poetry.lock", "package-lock.json"]
       - head-branch: ["^dependabot"]
 python:
   - any:

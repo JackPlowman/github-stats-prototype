@@ -13,3 +13,16 @@ astro-build:
 
 astro-preview:
     npm run preview
+
+# ------------------------------------------------------------------------------
+# TypeScript
+# ------------------------------------------------------------------------------
+
+install:
+    npm install
+
+eslint-check:
+    npx eslint .
+
+prettier-check:
+    npx prettier . --check
