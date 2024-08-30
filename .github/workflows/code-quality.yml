@@ -97,7 +97,7 @@ jobs:
         run: just dashboard::install
 
       - name: Check Typescript Code Quality
-        run: just dashboard::tsc-check
+        run: just dashboard::eslint-check
 
       - name: Check Typescript Code Format
         run: just dashboard::prettier-check

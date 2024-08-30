@@ -19,10 +19,10 @@ astro-preview:
 # ------------------------------------------------------------------------------
 
 install:
-  npm install
+    npm install
 
-tsc-check:
-    tsc --noEmit
+eslint-check:
+    npx eslint .
 
 prettier-check:
     prettier . --check
