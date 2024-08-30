@@ -19,6 +19,7 @@ astro-preview:
 # ------------------------------------------------------------------------------
 
 install:
+  npm install
 
 tsc-check:
     tsc --noEmit
