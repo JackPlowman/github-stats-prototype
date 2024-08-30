@@ -49,6 +49,9 @@
 - color: 2b67c6
   name: python
   description: Pull requests that update Python code
+- color: 00ff1e
+  name: Typescript
+  description: Pull requests that update Typescript code
 - color: 000000
   name: github_actions
   description: Pull requests that update GitHub Actions code
@@ -56,6 +59,19 @@
   name: just
   description: Pull requests that update Just code
 # Custom
-- color: 0E8A16
-  name: tests
-  description: Pull requests that update tests
+- color: 2b67c6
+  name: python-tests
+  description: Pull requests that update python tests
+- color: 00ff1e
+  name: typescript-tests
+  description: Pull requests that update typescript tests
+- color: 00f2de
+  name: End To End Tests
+  description: Pull requests that update end to end tests
+# Components
+- color: f200f2
+  name: analyser
+  description: Pull requests that update analyser code
+- color: f27100
+  name: dashboard
+  description: Pull requests that update dashboard code
