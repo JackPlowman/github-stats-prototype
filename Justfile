@@ -17,10 +17,10 @@ prettier-format:
 
 format:
     just --fmt --unstable
-    just analyser::format
-    just dashboard::format
+    just --fmt --unstable --justfile analyser/analyser.just
+    just --fmt --unstable --justfile dashboard/dashboard.just
 
 format-check:
     just --fmt --check --unstable
-    just analyser::format-check
-    just dashboard::format-check
+    just --fmt --check --unstable --justfile analyser/analyser.just
+    just --fmt --check --unstable --justfile dashboard/dashboard.just
