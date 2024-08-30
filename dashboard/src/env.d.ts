@@ -1,2 +1,1 @@
-/// <reference path="../.astro/types.d.ts" />
-// <reference path="../.astro/types.d.ts" /> error
+//<reference path="../.astro/types.d.ts" />
