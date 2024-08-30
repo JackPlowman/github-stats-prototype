@@ -49,7 +49,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         with:
-          path: dashboard
+          path: ./dashboard
 
   deploy:
     needs: build
