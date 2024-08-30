@@ -25,4 +25,4 @@ eslint-check:
     npx eslint .
 
 prettier-check:
-    prettier . --check
+    npx prettier . --check
