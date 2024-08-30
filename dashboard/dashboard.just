@@ -13,3 +13,15 @@ astro-build:
 
 astro-preview:
     npm run preview
+
+# ------------------------------------------------------------------------------
+# TypeScript
+# ------------------------------------------------------------------------------
+
+install:
+
+tsc-check:
+    tsc --noEmit
+
+prettier-check:
+    prettier . --check

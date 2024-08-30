@@ -74,6 +74,31 @@ jobs:
       - name: Check Python Code for Dead Code (Vulture)
         run: just analyser::vulture
 
+  check-typescript-code-format-and-quality:
+    name: Check Typescript Code Format and Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Install Node Dependencies
+        run: just dashboard::install
+
+      - name: Check Typescript Code Quality
+        run: just dashboard::tsc-check
+
+      - name: Check Typescript Code Format
+        run: just dashboard::prettier-check
+
   check-markdown-links:
     name: Check Markdown links
     runs-on: ubuntu-latest
