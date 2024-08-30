@@ -43,6 +43,9 @@ jobs:
       - name: Install Poetry Dependencies
         run: just analyser::install
 
+      - name: Copy generated files to github pages folder
+        run: cp -r analyser/generated_markdown/ dashboard/pages
+
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         with:
@@ -59,4 +62,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-        
+
