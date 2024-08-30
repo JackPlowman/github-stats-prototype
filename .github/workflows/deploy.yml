@@ -46,6 +46,9 @@ jobs:
       - name: Copy generated files to github pages folder
         run: cp -r analyser/generated_markdown/ dashboard/src/pages
 
+      - name: Check Copy
+        run: ls -la dashboard/src/pages
+
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         with:
