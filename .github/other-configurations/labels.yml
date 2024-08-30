@@ -66,7 +66,7 @@
   name: typescript-tests
   description: Pull requests that update typescript tests
 - color: 00f2de
-  name: End To End Tests
+  name: end-to-end-tests
   description: Pull requests that update end to end tests
 # Components
 - color: f200f2
