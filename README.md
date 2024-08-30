@@ -25,7 +25,7 @@ Status: Done
 
 In this phase the first iteration of the project will be developed. This will involve creating the basic structure of the project with Python and Markdown. Data will be scraped from GitHub using the GitHub API using Python and displayed in Markdown. GitHub pages will be used to host the generated Markdown.
 
-Timeline: 2024-08-24 - 2024-08-30 (6 days) - Up To Release (0.3.0)[https://github.com/JackPlowman/github-stats/releases/tag/v0.3.0]
+Timeline: 2024-08-24 - 2024-08-30 (6 days) - Up To Release [0.3.0](https://github.com/JackPlowman/github-stats/releases/tag/v0.3.0)
 
 #### Phase 2 - Full Development
 
