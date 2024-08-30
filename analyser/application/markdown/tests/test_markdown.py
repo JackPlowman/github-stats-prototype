@@ -10,7 +10,7 @@ def test_set_up_markdown_file() -> None:
     # Act
     markdown_file = set_up_markdown_file(file_path, title)
     # Assert
-    assert markdown_file.file_name == f"application/generated_markdown/{file_path}"
+    assert markdown_file.file_name == f"generated_markdown/{file_path}"
     assert markdown_file.title == f"\n{title}\n=======================\n"
 
 
