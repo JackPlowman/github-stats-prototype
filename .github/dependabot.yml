@@ -14,5 +14,5 @@ updates:
     commit-message:
       prefix: "deps(python)"
     schedule:
-      interval: "monthly"
+      interval: "daily"
     target-branch: "main"
