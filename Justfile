@@ -6,21 +6,21 @@ mod dashboard 'dashboard/dashboard.just'
 # ------------------------------------------------------------------------------
 
 prettier-check:
-		prettier . --check
+    prettier . --check
 
 prettier-format:
-		prettier . --check --write
+    prettier . --check --write
 
 # ------------------------------------------------------------------------------
 # Justfile
 # ------------------------------------------------------------------------------
 
 format:
-		just --fmt --unstable
-		just analyser::format
-		just dashboard::format
+    just --fmt --unstable
+    just analyser::format
+    just dashboard::format
 
 format-check:
-		just --fmt --check --unstable
-		just analyser::format-check
-		just dashboard::format-check
+    just --fmt --check --unstable
+    just analyser::format-check
+    just dashboard::format-check
