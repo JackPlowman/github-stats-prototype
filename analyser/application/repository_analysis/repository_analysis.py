@@ -84,7 +84,10 @@ def get_language_summary_stats(path_to_repo: str, repository_name: str) -> Proje
         for file in files:
             file_path = f"{_root.__str__()}/{file}"
             logger.debug("Analysing file", file=file_path)
-            project_summary.add(SourceAnalysis.from_file(file_path, repository_name))
+            file_analysis = SourceAnalysis.from_file(file_path, repository_name)
+            logger.warning("File analysis", file_analysis=file_analysis)
+            if file_analysis.language not in ["__unknown__", "__empty__", "__error__"]:
+                project_summary.add(file_analysis)
     logger.info("Finished analysing", total_files=project_summary.total_file_count)
     # Return the project summary
     return project_summary
