@@ -6,12 +6,14 @@ documentation:
 dependencies:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["**/poetry.lock", "**/pyproject.toml", "**/package.json"]
+          - any-glob-to-any-file:
+              ["**/poetry.lock", "**/pyproject.toml", "**/package.json"]
       - head-branch: ["^dependabot"]
 python:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["*.py", "**/*.py","**/poetry.lock", "**/pyproject.toml"]]
+          - any-glob-to-any-file:
+              ["*.py", "**/*.py", "**/poetry.lock", "**/pyproject.toml"]
 python-tests:
   - any:
       - changed-files:
@@ -19,7 +21,8 @@ python-tests:
 typescript:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["*.ts", "**/*.ts","**/tsconfig.json", "**/package.json"]
+          - any-glob-to-any-file:
+              ["*.ts", "**/*.ts", "**/tsconfig.json", "**/package.json"]
 typescript-tests:
   - any:
       - changed-files:
