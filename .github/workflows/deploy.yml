@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - astro-deploy
 
 permissions:
   contents: write
@@ -11,11 +12,9 @@ permissions:
   id-token: write
 
 jobs:
-  deploy-github-pages:
-    name: Deploy to GitHub Pages
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
 
     timeout-minutes: 60
     steps:
@@ -44,24 +43,20 @@ jobs:
       - name: Install Poetry Dependencies
         run: just analyser::install
 
-      - name: Generate GitHub Pages
-        env:
-          REPOSITORY_OWNER: ${{ github.repository_owner }}
-        run: just analyser::run
-
-      - name: Copy generated files to github pages folder
-        run: cp -r analyser/generated_markdown/ github-pages
-
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
         with:
-          source: ./github-pages
-          destination: ./_site
+          path: dashboard
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./_site
-
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        id: deployment
+        uses: actions/deploy-pages@v1
+        
