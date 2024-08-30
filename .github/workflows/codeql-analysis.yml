@@ -11,8 +11,13 @@ on:
 permissions:
   contents: read
 
+
+
 jobs:
-  CodeQL-Build:
+  CodeQL-Analysis:
+    strategy:
+      matrix:
+        language: ["python", "javascript-typescript"]
     name: CodeQL Analysis
     runs-on: ubuntu-latest
     permissions:
@@ -24,7 +29,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: python
+          languages: ${{ matrix.language }}
           queries: security-and-quality
 
       - name: Perform CodeQL Analysis
