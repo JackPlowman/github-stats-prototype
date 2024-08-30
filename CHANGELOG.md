@@ -1,5 +1,49 @@
 # Changelog
 
+## [0.3.0](https://github.com/JackPlowman/github-stats/compare/v0.2.0...v0.3.0) (2024-08-30)
+
+
+### 🚀 Features
+
+* Add Total Commits to Index Page ([#91](https://github.com/JackPlowman/github-stats/issues/91)) ([785a0ce](https://github.com/JackPlowman/github-stats/commit/785a0ce29ab5512552019901b57571984a01e052))
+* Format and Sort Summary Table ([#86](https://github.com/JackPlowman/github-stats/issues/86)) ([5f28563](https://github.com/JackPlowman/github-stats/commit/5f28563f59b4e5d0ff3a4f46751e231905d2afaa))
+* Gather Statistics for Multiple Repositories ([#78](https://github.com/JackPlowman/github-stats/issues/78)) ([8e80eba](https://github.com/JackPlowman/github-stats/commit/8e80eba487604ec6f652cf5f06d220ca891c954c)), closes [#77](https://github.com/JackPlowman/github-stats/issues/77)
+* Get Repository Description from GitHub ([#83](https://github.com/JackPlowman/github-stats/issues/83)) ([f00f743](https://github.com/JackPlowman/github-stats/commit/f00f7439d58b18d57d73eea2e346c00016ca0eb0)), closes [#84](https://github.com/JackPlowman/github-stats/issues/84)
+* Remove Empty, Error and Unknown Files from Analysis ([#107](https://github.com/JackPlowman/github-stats/issues/107)) ([12eadc1](https://github.com/JackPlowman/github-stats/commit/12eadc15fcd8d277a542f728725acd9d3e224776)), closes [#108](https://github.com/JackPlowman/github-stats/issues/108)
+* Sort Language Count Table ([#85](https://github.com/JackPlowman/github-stats/issues/85)) ([f7e1f87](https://github.com/JackPlowman/github-stats/commit/f7e1f87bcc3f0de7cf6443e5436f1a44d31bb2cf))
+
+
+### 🐛 Bugfixes
+
+* Analyser Using Incorrect Generated Markdown Folder ([#113](https://github.com/JackPlowman/github-stats/issues/113)) ([62e69c8](https://github.com/JackPlowman/github-stats/commit/62e69c8c1e70eb0e713a5857a387c92c8e27f40b))
+* Fix Deploy to GitHub Pages ([#79](https://github.com/JackPlowman/github-stats/issues/79)) ([6373d42](https://github.com/JackPlowman/github-stats/commit/6373d42f57c48d8d1675798220fb72d83769b9ad))
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** Bump super-linter/super-linter from 7.0.0 to 7.1.0 ([#73](https://github.com/JackPlowman/github-stats/issues/73)) ([5af9054](https://github.com/JackPlowman/github-stats/commit/5af90541b65212664aef424d24a611943306bb37))
+
+
+### 📝 Documentation
+
+* Update Readme with Development Phases ([#95](https://github.com/JackPlowman/github-stats/issues/95)) ([6998193](https://github.com/JackPlowman/github-stats/commit/6998193c22b2863821edf3a4876d56f8aa19af6f)), closes [#94](https://github.com/JackPlowman/github-stats/issues/94)
+
+
+### 🧰 Maintenance
+
+* Add VSCode Unit Test Configuration ([#82](https://github.com/JackPlowman/github-stats/issues/82)) ([8776a58](https://github.com/JackPlowman/github-stats/commit/8776a58db04b824a51c37831c1c64f21c8f0cbac))
+* Custom Python Logging ([#76](https://github.com/JackPlowman/github-stats/issues/76)) ([3ce7e52](https://github.com/JackPlowman/github-stats/commit/3ce7e52653d0f69d7504f4aa8fae7b9bd94fe74a)), closes [#75](https://github.com/JackPlowman/github-stats/issues/75)
+* Hide git ignored files from Visual Studio Code explorer ([#100](https://github.com/JackPlowman/github-stats/issues/100)) ([b794640](https://github.com/JackPlowman/github-stats/commit/b7946409295aded6dcfcb29c3d4cc63dfcbbd0a0)), closes [#99](https://github.com/JackPlowman/github-stats/issues/99)
+* Improve Clean Up Commands ([#81](https://github.com/JackPlowman/github-stats/issues/81)) ([6341ec5](https://github.com/JackPlowman/github-stats/commit/6341ec53e138bef1a7507ad3a552e73e455cb58e)), closes [#80](https://github.com/JackPlowman/github-stats/issues/80)
+* Language Selection Refactor ([#105](https://github.com/JackPlowman/github-stats/issues/105)) ([1774f0d](https://github.com/JackPlowman/github-stats/commit/1774f0d9d351e0befcef8d59ff36da1df79fb875)), closes [#106](https://github.com/JackPlowman/github-stats/issues/106)
+* Migrate Repos folder out of Application folder ([#103](https://github.com/JackPlowman/github-stats/issues/103)) ([1a8c101](https://github.com/JackPlowman/github-stats/commit/1a8c10153dc95307e29696f287b0be4e19bbe9bd)), closes [#102](https://github.com/JackPlowman/github-stats/issues/102)
+* Move Generated Markdown Folder Location ([#112](https://github.com/JackPlowman/github-stats/issues/112)) ([d158219](https://github.com/JackPlowman/github-stats/commit/d15821921e970fe9a5c8be76d315885188a89cc4)), closes [#111](https://github.com/JackPlowman/github-stats/issues/111)
+* Refactor Analyser Python Code Folder Structure ([#93](https://github.com/JackPlowman/github-stats/issues/93)) ([59dd323](https://github.com/JackPlowman/github-stats/commit/59dd323d17faaa1655c7335f75c2b6d472c83ffb)), closes [#92](https://github.com/JackPlowman/github-stats/issues/92)
+* Remove Bandit ([#89](https://github.com/JackPlowman/github-stats/issues/89)) ([114f2a1](https://github.com/JackPlowman/github-stats/commit/114f2a1d27b5e84711009154f2da8252e9978def))
+* Update Release Please ([#101](https://github.com/JackPlowman/github-stats/issues/101)) ([617973c](https://github.com/JackPlowman/github-stats/commit/617973c2d1a50125bc51169e4a718c47bf078b61)), closes [#98](https://github.com/JackPlowman/github-stats/issues/98)
+* Update Ruff Rules ([#88](https://github.com/JackPlowman/github-stats/issues/88)) ([b22edfd](https://github.com/JackPlowman/github-stats/commit/b22edfdf26d9c4478c84c2b6d8518d62723a82b4))
+* Update Title Checks ([#97](https://github.com/JackPlowman/github-stats/issues/97)) ([d9c73e6](https://github.com/JackPlowman/github-stats/commit/d9c73e616d0cb8d262445938f538eca7414c8697)), closes [#96](https://github.com/JackPlowman/github-stats/issues/96)
+
 ## [0.2.0](https://github.com/JackPlowman/github-stats/compare/v0.1.0...v0.2.0) (2024-08-28)
 
 
