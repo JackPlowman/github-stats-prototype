@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - astro-deploy
 
 permissions:
   contents: write
@@ -11,11 +12,9 @@ permissions:
   id-token: write
 
 jobs:
-  deploy-github-pages:
-    name: Deploy to GitHub Pages
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
 
     timeout-minutes: 60
     steps:
@@ -50,18 +49,21 @@ jobs:
         run: just analyser::run
 
       - name: Copy generated files to github pages folder
-        run: cp -r analyser/generated_markdown/ github-pages
+        run: cp -r analyser/generated_markdown/*.md dashboard/src/pages
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
         with:
-          source: ./github-pages
-          destination: ./_site
+          path: ./dashboard
+          node-version: 22
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./_site
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
