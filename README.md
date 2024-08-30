@@ -12,7 +12,7 @@ A project to collect and display GitHub statistics in GitHub pages. Currently us
   - [Development](#development)
     - [Development Phases](#development-phases)
       - [Phase 1 - Early Development / Prototype](#phase-1---early-development--prototype)
-      - [Phase 2 - V2 Development](#phase-2---v2-development)
+      - [Phase 2 - Full Development](#phase-2---full-development)
   - [License](#license)
 
 ## Development
@@ -25,7 +25,9 @@ Status: Done
 
 In this phase the first iteration of the project will be developed. This will involve creating the basic structure of the project with Python and Markdown. Data will be scraped from GitHub using the GitHub API using Python and displayed in Markdown. GitHub pages will be used to host the generated Markdown.
 
-#### Phase 2 - V2 Development
+Timeline: 2024-08-24 - 2024-08-30 (6 days) - Up To Release [0.3.0](https://github.com/JackPlowman/github-stats/releases/tag/v0.3.0)
+
+#### Phase 2 - Full Development
 
 Status: In Progress
 
