@@ -52,7 +52,7 @@ jobs:
         run: cp -r analyser/generated_markdown/*.md dashboard/src/pages
 
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v3
         with:
           path: ./dashboard
           node-version: 22
