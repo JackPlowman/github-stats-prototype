@@ -2,7 +2,7 @@
 
 ## Project Description
 
-A project to collect and display GitHub statistics in GitHub pages. Currently using Python to scrape the data and display it in Markdown. The generated Markdown is then deployed to GitHub pages using GitHub Actions and Jekyll.
+A project to collect and display GitHub statistics in GitHub pages. Currently using Python to scrape the data and store it in csv. Then Astro will display it with Shadcn-ui
 
 ## Table of Contents
 
