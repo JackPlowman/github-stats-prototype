@@ -2,7 +2,7 @@
 
 ## Project Description
 
-A project to collect and display GitHub statistics in GitHub pages. Currently using Python to scrape the data and store it in csv. Then Astro will display it with Shadcn-ui
+A project to collect and display GitHub statistics in GitHub pages. Currently using Python to scrape the data and store it in csv. Then a React Typescript app will display the data in a dashboard.
 
 ## Table of Contents
 
@@ -31,9 +31,8 @@ Timeline: 2024-08-24 - 2024-08-30 (6 days) - Up To Release [0.3.0](https://githu
 
 Status: In Progress
 
-In this phase the second iteration of the project will be developed. This will involve changing the data scraping and displaying process to csv files. Astro/Shadui will be used to create the a dashboard to display the data.
+In this phase the second iteration of the project will be developed. This will involve changing the data scraping and displaying process to csv files. React/Shadcn-ui will be used to create the a dashboard to display the data.
 
-Note: Tech Stack is subject to change.
 
 ## License
 
