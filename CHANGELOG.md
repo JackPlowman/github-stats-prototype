@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.0.0](https://github.com/JackPlowman/github-stats-prototype/compare/v0.3.0...v1.0.0) (2024-09-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Fix GitHub Pages Link ([#138](https://github.com/JackPlowman/github-stats-prototype/issues/138))
+
+### 🐛 Bugfixes
+
+* Fix GitHub Pages Link ([#138](https://github.com/JackPlowman/github-stats-prototype/issues/138)) ([6d1b2e6](https://github.com/JackPlowman/github-stats-prototype/commit/6d1b2e6eacfb8a2844cae883a37605ad423fd576))
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** Bump UmbrellaDocs/action-linkspector from 1.2.0 to 1.2.1 ([#131](https://github.com/JackPlowman/github-stats-prototype/issues/131)) ([c1ec77e](https://github.com/JackPlowman/github-stats-prototype/commit/c1ec77e09041fbbae7570e5ca1da0018fde73a71))
+* **python:** Bump ruff from 0.6.3 to 0.6.4 in /analyser ([#133](https://github.com/JackPlowman/github-stats-prototype/issues/133)) ([716d2ac](https://github.com/JackPlowman/github-stats-prototype/commit/716d2acba783fb9ec767b74d889b1fba0be8f742))
+* **python:** Poetry Update ([#137](https://github.com/JackPlowman/github-stats-prototype/issues/137)) ([9536675](https://github.com/JackPlowman/github-stats-prototype/commit/9536675b1ff50ca73e55c20f343ef178b015781a))
+
+
+### 🧰 Maintenance
+
+* Rename Project to GitHub Stats Prototype ([#135](https://github.com/JackPlowman/github-stats-prototype/issues/135)) ([e230c14](https://github.com/JackPlowman/github-stats-prototype/commit/e230c14b8733ce7f752b712015fec10f0a57aa4e))
+* Update Readme ([#136](https://github.com/JackPlowman/github-stats-prototype/issues/136)) ([a9ad3d7](https://github.com/JackPlowman/github-stats-prototype/commit/a9ad3d7cac78c22e677d84ba27390407fe1f477f))
+* Update Release Please ([#134](https://github.com/JackPlowman/github-stats-prototype/issues/134)) ([2954504](https://github.com/JackPlowman/github-stats-prototype/commit/29545049b2c5e2a362977a7b5ab904c89044e072))
+
 ## [0.3.0](https://github.com/JackPlowman/github-stats-prototype/compare/v0.2.0...v0.3.0) (2024-08-30)
 
 
