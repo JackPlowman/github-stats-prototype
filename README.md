@@ -1,4 +1,4 @@
-# GitHub Stats
+# GitHub Stats Prototype
 
 ## Project Description
 
@@ -6,7 +6,7 @@ A project to collect and display GitHub statistics in GitHub pages. Currently us
 
 ## Table of Contents
 
-- [GitHub Stats](#github-stats)
+- [GitHub Stats Prototype](#github-stats-prototype)
   - [Project Description](#project-description)
   - [Table of Contents](#table-of-contents)
   - [Development](#development)
