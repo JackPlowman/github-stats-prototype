@@ -11,10 +11,10 @@ def test_clone_repo(mock_repo: MagicMock, mock_path: MagicMock) -> None:
     # Arrange
     mock_path.exists.return_value = False
     # Act
-    clone_repo("JackPlowman", "github-stats")
+    clone_repo("JackPlowman", "github-stats-prototype")
     # Assert
     mock_repo.clone_from.assert_called_once_with(
-        "https://github.com/JackPlowman/github-stats.git", mock_path.return_value
+        "https://github.com/JackPlowman/github-stats-prototype.git", mock_path.return_value
     )
 
 

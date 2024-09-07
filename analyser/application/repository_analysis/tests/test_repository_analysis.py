@@ -21,7 +21,7 @@ def test_analyse_repository(
 ) -> None:
     total = 100
     mock_add_language_summary_stats.return_value = MagicMock(), total
-    repository = "JackPlowman/github-stats"
+    repository = "JackPlowman/github-stats-prototype"
 
     # Act
     result = analyse_repository(repository)
