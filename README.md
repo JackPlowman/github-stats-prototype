@@ -21,17 +21,17 @@ A project to collect and display GitHub statistics in GitHub pages. Currently us
 
 #### Phase 1 - Early Development / Prototype
 
-Status: In Progress
+Status: Complete
 
 In this phase the first iteration of the project will be developed. This will involve creating the basic structure of the project with Python and Markdown. Data will be scraped from GitHub using the GitHub API using Python and displayed in Markdown. GitHub pages will be used to host the generated Markdown.
 
 #### Phase 2 - V2 Development
 
-Status: Planned
+Status: In Progress
 
-In this phase the second iteration of the project will be developed. This will involve changing the data scraping and displaying process to csv files. Astro/Shadui will be used to create the a dashboard to display the data.
+Repository - [github-stats](https://github.com/JackPlowman/github-stats)
 
-Note: Tech Stack is subject to change.
+In this phase the second iteration of the project will be developed. This will involve changing the data scraping and displaying process to csv files. The a dashboard will be created using Typescript.
 
 ## License
 
