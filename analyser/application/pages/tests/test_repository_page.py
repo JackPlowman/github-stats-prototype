@@ -12,7 +12,7 @@ def test_set_up_repository_pages(
 ) -> None:
     # Arrange
     mock_repository = MagicMock()
-    mock_repository.full_name = "JackPlowman/github-stats"
+    mock_repository.full_name = "JackPlowman/github-stats-prototype"
     mock_repository.description = "A test repository"
     mock_repository.get_commits.return_value.totalCount = commit_count = 10
     repositories = [mock_repository]

@@ -14,7 +14,9 @@ def test_set_up_index_page(
 ) -> None:
     # Arrange
     repositories = [
-        CataloguedRepository("JackPlowman/github-stats", "A repository for analysing GitHub repositories.", 100, 10)
+        CataloguedRepository(
+            "JackPlowman/github-stats-prototype", "A repository for analysing GitHub repositories.", 100, 10
+        )
     ]
     # Act
     set_up_index_page(repositories)
