@@ -38,7 +38,7 @@ jobs:
         run: just analyser::unit-test
 
       - name: Override Coverage Source Path for Sonar
-        run: sed -i "s/<source>\/home\/runner\/work\/github-stats-prototype\/github-stats-prototype\/analyser\/application<\/source>/<source>\/github\/workspace\/analyser\/application<\/source>/g" /home/runner/work/github-stats/github-stats/analyser/coverage.xml
+        run: sed -i "s/<source>\/home\/runner\/work\/github-stats-prototype\/github-stats-prototype\/analyser\/application<\/source>/<source>\/github\/workspace\/analyser\/application<\/source>/g" /home/runner/work/github-stats-prototype/github-stats-prototype/analyser/coverage.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
