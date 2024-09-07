@@ -24,7 +24,7 @@ def test_clone_repo_exists(mock_repo: MagicMock, mock_path: MagicMock) -> None:
     # Arrange
     mock_path.exists.return_value = True
     # Act
-    clone_repo("JackPlowman", "github-stats")
+    clone_repo("JackPlowman", "github-stats-prototype")
     # Assert
     mock_repo.clone_from.assert_not_called()
 
