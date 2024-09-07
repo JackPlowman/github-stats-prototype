@@ -17,7 +17,7 @@ pygithub = "2.4.0"
 pygount = { version = "1.8.0", python = "<3.13,>=3.8"}
 
 [tool.poetry.group.dev.dependencies]
-ruff = "0.6.3"
+ruff = "0.6.4"
 pytest = "8.3.2"
 vulture = "2.11"
 bandit = "1.7.9"
