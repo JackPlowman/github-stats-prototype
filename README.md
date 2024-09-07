@@ -27,7 +27,9 @@ In this phase the first iteration of the project will be developed. This will in
 
 #### Phase 2 - V2 Development
 
-Status: Planned
+Status: In Progress
+
+Repository - [github-stats](https://github.com/JackPlowman/github-stats)
 
 In this phase the second iteration of the project will be developed. This will involve changing the data scraping and displaying process to csv files. The a dashboard will be created using Typescript.
 
