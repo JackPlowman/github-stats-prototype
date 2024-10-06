@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.0.1](https://github.com/JackPlowman/github-stats-prototype/compare/v1.0.0...v1.0.1) (2024-10-06)
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** Bump SonarSource/sonarcloud-github-action from 3.0.0 to 3.1.0 in the github-actions group ([#155](https://github.com/JackPlowman/github-stats-prototype/issues/155)) ([c49357f](https://github.com/JackPlowman/github-stats-prototype/commit/c49357f16c25c5bf743bbeded750a77c9cbb9680))
+* **github-actions:** Bump UmbrellaDocs/action-linkspector from 1.2.1 to 1.2.2 in the github-actions group ([#149](https://github.com/JackPlowman/github-stats-prototype/issues/149)) ([0e9b89f](https://github.com/JackPlowman/github-stats-prototype/commit/0e9b89f349b0b048484ef217f37bef8c29bd99ce))
+* **python:** Bump the python group across 1 directory with 2 updates ([#152](https://github.com/JackPlowman/github-stats-prototype/issues/152)) ([1561b35](https://github.com/JackPlowman/github-stats-prototype/commit/1561b3562c734c5fc26e467bb951332249c75eb1))
+* **python:** Bump the python group in /analyser with 2 updates ([#146](https://github.com/JackPlowman/github-stats-prototype/issues/146)) ([2ebb6a6](https://github.com/JackPlowman/github-stats-prototype/commit/2ebb6a656fa0121a55d6adb30325ba7f67fe799b))
+* **python:** Remove Bandit and Update Dependencies ([#151](https://github.com/JackPlowman/github-stats-prototype/issues/151)) ([14d25f9](https://github.com/JackPlowman/github-stats-prototype/commit/14d25f9d6890c938d5d259cfb19e387685cec565)), closes [#150](https://github.com/JackPlowman/github-stats-prototype/issues/150)
+
+
+### 🧰 Maintenance
+
+* Deploy GitHub Pages On Schedule ([#145](https://github.com/JackPlowman/github-stats-prototype/issues/145)) ([7f06451](https://github.com/JackPlowman/github-stats-prototype/commit/7f06451757859ca4bb222f50afb9ea9e036d82f8)), closes [#140](https://github.com/JackPlowman/github-stats-prototype/issues/140)
+* Group Dependabot Pull Requests ([#143](https://github.com/JackPlowman/github-stats-prototype/issues/143)) ([57a2fda](https://github.com/JackPlowman/github-stats-prototype/commit/57a2fda8418b49eff2b8c314f1987812aa0a69f9)), closes [#142](https://github.com/JackPlowman/github-stats-prototype/issues/142)
+
 ## [1.0.0](https://github.com/JackPlowman/github-stats-prototype/compare/v0.3.0...v1.0.0) (2024-09-07)
 
 
