@@ -59,3 +59,22 @@
 - color: 0E8A16
   name: tests
   description: Pull requests that update tests
+# Sizes
+- color: 00ff22
+  name: size/XS
+  description: Extra Small Pull Request
+- color: 03a319
+  name: size/S
+  description: Small Pull Request
+- color: f2bb05
+  name: size/M
+  description: Medium Pull Request
+- color: fc7e08
+  name: size/L
+  description: Large Pull Request
+- color: ad2e03
+  name: size/XL
+  description: Extra Large Pull Request
+- color: 751f01
+  name: size/XXL
+  description: Extra Extra Large Pull Request
