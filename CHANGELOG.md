@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.0.1](https://github.com/JackPlowman/github-stats-prototype/compare/v1.0.0...v1.0.1) (2024-10-29)
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** Bump SonarSource/sonarcloud-github-action from 3.0.0 to 3.1.0 in the github-actions group ([#155](https://github.com/JackPlowman/github-stats-prototype/issues/155)) ([c49357f](https://github.com/JackPlowman/github-stats-prototype/commit/c49357f16c25c5bf743bbeded750a77c9cbb9680))
+* **github-actions:** Bump UmbrellaDocs/action-linkspector from 1.2.1 to 1.2.2 in the github-actions group ([#149](https://github.com/JackPlowman/github-stats-prototype/issues/149)) ([0e9b89f](https://github.com/JackPlowman/github-stats-prototype/commit/0e9b89f349b0b048484ef217f37bef8c29bd99ce))
+* **github-actions:** Bump UmbrellaDocs/action-linkspector from 1.2.2 to 1.2.3 in the github-actions group ([#159](https://github.com/JackPlowman/github-stats-prototype/issues/159)) ([54d9b26](https://github.com/JackPlowman/github-stats-prototype/commit/54d9b26288cf7c2c9c8549682718f40ccd0f6752))
+* **python:** Bump ruff from 0.6.8 to 0.7.0 in /analyser in the python group ([#158](https://github.com/JackPlowman/github-stats-prototype/issues/158)) ([8faec38](https://github.com/JackPlowman/github-stats-prototype/commit/8faec38e363fe3c142603e842361af0bd388fb12))
+* **python:** Bump the python group across 1 directory with 2 updates ([#152](https://github.com/JackPlowman/github-stats-prototype/issues/152)) ([1561b35](https://github.com/JackPlowman/github-stats-prototype/commit/1561b3562c734c5fc26e467bb951332249c75eb1))
+* **python:** Bump the python group in /analyser with 2 updates ([#146](https://github.com/JackPlowman/github-stats-prototype/issues/146)) ([2ebb6a6](https://github.com/JackPlowman/github-stats-prototype/commit/2ebb6a656fa0121a55d6adb30325ba7f67fe799b))
+* **python:** Remove Bandit and Update Dependencies ([#151](https://github.com/JackPlowman/github-stats-prototype/issues/151)) ([14d25f9](https://github.com/JackPlowman/github-stats-prototype/commit/14d25f9d6890c938d5d259cfb19e387685cec565)), closes [#150](https://github.com/JackPlowman/github-stats-prototype/issues/150)
+
+
+### 🧰 Maintenance
+
+* Add British English preference to PR template ([#165](https://github.com/JackPlowman/github-stats-prototype/issues/165)) ([49aabfe](https://github.com/JackPlowman/github-stats-prototype/commit/49aabfe48798a51a37b31046a0394e9b85df612b)), closes [#166](https://github.com/JackPlowman/github-stats-prototype/issues/166)
+* Add size labels to GitHub configuration ([#163](https://github.com/JackPlowman/github-stats-prototype/issues/163)) ([f1f6087](https://github.com/JackPlowman/github-stats-prototype/commit/f1f6087671dee28ced24965a29d9b034f4f055bc)), closes [#161](https://github.com/JackPlowman/github-stats-prototype/issues/161)
+* Adjust PR size label thresholds ([#168](https://github.com/JackPlowman/github-stats-prototype/issues/168)) ([fc67ccb](https://github.com/JackPlowman/github-stats-prototype/commit/fc67ccb0238d8e1a9dfcc3ef91734a7b87b1b9b1)), closes [#167](https://github.com/JackPlowman/github-stats-prototype/issues/167)
+* Deploy GitHub Pages On Schedule ([#145](https://github.com/JackPlowman/github-stats-prototype/issues/145)) ([7f06451](https://github.com/JackPlowman/github-stats-prototype/commit/7f06451757859ca4bb222f50afb9ea9e036d82f8)), closes [#140](https://github.com/JackPlowman/github-stats-prototype/issues/140)
+* Enhance PR Labelling with Size Labels ([#164](https://github.com/JackPlowman/github-stats-prototype/issues/164)) ([eb20a4b](https://github.com/JackPlowman/github-stats-prototype/commit/eb20a4be89f44260c2f0c788213b1983eab29919)), closes [#162](https://github.com/JackPlowman/github-stats-prototype/issues/162)
+* Group Dependabot Pull Requests ([#143](https://github.com/JackPlowman/github-stats-prototype/issues/143)) ([57a2fda](https://github.com/JackPlowman/github-stats-prototype/commit/57a2fda8418b49eff2b8c314f1987812aa0a69f9)), closes [#142](https://github.com/JackPlowman/github-stats-prototype/issues/142)
+* Update GitHub Actions to latest versions ([#171](https://github.com/JackPlowman/github-stats-prototype/issues/171)) ([2402008](https://github.com/JackPlowman/github-stats-prototype/commit/2402008f7cfab214aef3cce469d3b461a4de383d)), closes [#172](https://github.com/JackPlowman/github-stats-prototype/issues/172)
+* Update VS Code settings for Ruff and file nesting ([#169](https://github.com/JackPlowman/github-stats-prototype/issues/169)) ([0c878e7](https://github.com/JackPlowman/github-stats-prototype/commit/0c878e7366d8723e307fbb0e435397b3d6e40fb3)), closes [#170](https://github.com/JackPlowman/github-stats-prototype/issues/170)
+
 ## [1.0.0](https://github.com/JackPlowman/github-stats-prototype/compare/v0.3.0...v1.0.0) (2024-09-07)
 
 
