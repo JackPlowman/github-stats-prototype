@@ -1,5 +1,9 @@
 # GitHub Stats Prototype
 
+> [!WARNING]
+> This project has been sunsetted and is no longer maintained.
+> The new iteration of this project can be found at these 2 repos [GitHub Stats Analyser](https://github.com/JackPlowman/github-stats-analyser) and [GitHub Stats](https://github.com/JackPlowman/github-stats)
+
 ## Project Description
 
 A project to collect and display GitHub statistics in GitHub pages. Currently using Python to scrape the data and display it in Markdown. The generated Markdown is then deployed to GitHub pages using GitHub Actions and Jekyll.
